@@ -1,0 +1,11 @@
+<!doctype html>
+<html><body style="margin:0;background:#000">
+<canvas id="c" style="width:100%;display:block"></canvas>
+<div id="i" style="position:fixed;top:0;left:0;color:#0f0;font:12px monospace;background:#000;padding:2px 6px;z-index:9"></div>
+<script>
+const v=document.createElement('video');v.src="../uploads/video-1787912731393-axmw.mp4";v.muted=true;
+const c=document.getElementById('c'),x=c.getContext('2d');
+v.onloadedmetadata=()=>{c.width=v.videoWidth;c.height=v.videoHeight;};
+window.seek=t=>new Promise(r=>{v.currentTime=t;v.onseeked=()=>{x.drawImage(v,0,0);document.getElementById('i').textContent=v.currentTime.toFixed(1)+'/'+v.duration.toFixed(1);setTimeout(r,60)}});
+</script>
+</body></html>
