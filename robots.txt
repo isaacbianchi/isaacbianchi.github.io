@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Working / source directories — no value for crawlers
+Disallow: /uploads/
+Disallow: /ref/
+Disallow: /ref2/
+Disallow: /screenshots/
+
+Sitemap: https://isaacbianchi.com/sitemap.xml
