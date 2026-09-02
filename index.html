@@ -806,13 +806,13 @@
           <div style="margin-top:24px; display:inline-flex; align-items:center; gap:10px; padding:9px 16px; border-radius:999px; border:1px solid rgba(124,224,168,.28); background:rgba(124,224,168,.08); font-size:11.5px; letter-spacing:.16em; color:#A9E8C6"><span style="width:6px; height:6px; border-radius:50%; background:#7CE0A8; box-shadow:0 0 10px #7CE0A8; animation:om-blink 2.8s ease-in-out infinite"></span>OPEN TO NEW OPPORTUNITIES</div>
         </div>
         <div>
-          <a href="mailto:isaacbianchi48@gmail.com" onClick="{{ copyEmail }}" style="display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:64px; padding:24px 22px; border-radius:22px; border:1px solid rgba(255,255,255,.13); background:linear-gradient(150deg, rgba(255,255,255,.1), rgba(8,18,32,.4)); backdrop-filter:blur(26px) saturate(160%); -webkit-backdrop-filter:blur(26px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.24) inset; color:inherit; margin-bottom:12px; transition:background .35s, border-color .35s, transform .35s" style-hover="background:linear-gradient(140deg,#F7DCC7,#E9BFA3); color:#050D18; border-color:transparent">
-            <span style="font-size:clamp(22px,2.2vw,30px); font-weight:300; letter-spacing:-.02em; color:#FFFFFF">Email</span>
-            <span style="display:flex; align-items:center; gap:16px"><span style="font-size:13.5px; color:#A8B0C4">isaacbianchi48@gmail.com</span><span style="font-size:18px; color:#E9BFA3">→</span></span>
+          <a href="mailto:isaacbianchi48@gmail.com" onClick="{{ copyEmail }}" style="display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:64px; padding:24px 22px; border-radius:22px; border:1px solid rgba(255,255,255,.13); background:linear-gradient(150deg, rgba(255,255,255,.1), rgba(8,18,32,.4)); backdrop-filter:blur(26px) saturate(160%); -webkit-backdrop-filter:blur(26px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.24) inset; color:#FFFFFF; margin-bottom:12px; transition:background .35s, border-color .35s, transform .35s" style-hover="background:linear-gradient(140deg,#E5B896,#D9A176); color:#0A0603; border-color:transparent">
+            <span style="font-size:clamp(22px,2.2vw,30px); font-weight:300; letter-spacing:-.02em; color:inherit">Email</span>
+            <span style="display:flex; align-items:center; gap:16px"><span style="font-size:13.5px; color:inherit; opacity:.72">isaacbianchi48@gmail.com</span><span style="font-size:18px; color:inherit; opacity:.85">→</span></span>
           </a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:64px; padding:24px 22px; border-radius:22px; border:1px solid rgba(255,255,255,.13); background:linear-gradient(150deg, rgba(255,255,255,.1), rgba(8,18,32,.4)); backdrop-filter:blur(26px) saturate(160%); -webkit-backdrop-filter:blur(26px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.24) inset; color:inherit; transition:background .35s, border-color .35s, transform .35s" style-hover="background:linear-gradient(140deg,#F7DCC7,#E9BFA3); color:#050D18; border-color:transparent">
-            <span style="font-size:clamp(22px,2.2vw,30px); font-weight:300; letter-spacing:-.02em; color:#FFFFFF">LinkedIn</span>
-            <span style="display:flex; align-items:center; gap:16px"><span style="font-size:13.5px; color:#A8B0C4">Isaac Bianchi</span><span style="font-size:18px; color:#E9BFA3">→</span></span>
+          <a href="https://www.linkedin.com/in/isaac-bianchi" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:64px; padding:24px 22px; border-radius:22px; border:1px solid rgba(255,255,255,.13); background:linear-gradient(150deg, rgba(255,255,255,.1), rgba(8,18,32,.4)); backdrop-filter:blur(26px) saturate(160%); -webkit-backdrop-filter:blur(26px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.24) inset; color:#FFFFFF; transition:background .35s, border-color .35s, transform .35s" style-hover="background:linear-gradient(140deg,#E5B896,#D9A176); color:#0A0603; border-color:transparent">
+            <span style="font-size:clamp(22px,2.2vw,30px); font-weight:300; letter-spacing:-.02em; color:inherit">LinkedIn</span>
+            <span style="display:flex; align-items:center; gap:16px"><span style="font-size:13.5px; color:inherit; opacity:.72">Isaac Bianchi</span><span style="font-size:18px; color:inherit; opacity:.85">→</span></span>
           </a>
         </div>
       </div>
@@ -1720,12 +1720,18 @@ class Component extends DCLogic {
      sound button lets the user re-trigger or mute it explicitly. */
   armAmbient() {
     if (this.props.ambientAudio === false) return;
-    const events = ["pointerdown", "keydown", "wheel", "touchstart"];
+    const events = ["pointerdown", "click", "keydown", "wheel", "touchstart", "touchend"];
     const start = () => {
-      events.forEach(ev => window.removeEventListener(ev, start));
+      events.forEach(ev => {
+        window.removeEventListener(ev, start, { capture: true });
+        document.removeEventListener(ev, start, { capture: true });
+      });
       this.playAmbient();
     };
-    events.forEach(ev => window.addEventListener(ev, start, { passive: true }));
+    events.forEach(ev => {
+      window.addEventListener(ev, start, { capture: true, passive: true });
+      document.addEventListener(ev, start, { capture: true, passive: true });
+    });
   }
 
   playAmbient() {
@@ -1738,7 +1744,15 @@ class Component extends DCLogic {
     this.audioCtx = ctx;
 
     const build = () => {
-      if (!this.mounted || ctx.state !== "running") { this.audioStarted = false; return; }
+      if (!this.mounted) return;
+      if (ctx.state !== "running") {
+        /* no user activation in this document yet — throw it away and wait for a real gesture */
+        try { ctx.close(); } catch (err) {}
+        this.audioCtx = null;
+        this.audioStarted = false;
+        this.armAmbient();
+        return;
+      }
       const now = ctx.currentTime, dur = 15;
       this.setState({ audioOn: true });
 
@@ -1795,8 +1809,12 @@ class Component extends DCLogic {
     };
 
     const res = ctx.resume();
-    if (res && typeof res.then === "function") res.then(build).catch(() => { this.audioStarted = false; });
-    else build();
+    if (res && typeof res.then === "function") {
+      res.then(build).catch(() => { this.audioStarted = false; this.armAmbient(); });
+    } else {
+      /* older Safari: resume() is sync, give the graph a tick to settle */
+      setTimeout(build, 0);
+    }
   }
 
   stopAmbient() {
