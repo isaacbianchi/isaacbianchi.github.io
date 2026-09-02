@@ -50,6 +50,25 @@
     <div ref="{{ progressRef }}" style="height:100%; width:0%; background:linear-gradient(90deg,#4FA3C7,#E9BFA3); box-shadow:0 0 16px rgba(233,191,163,.6); transition:width .1s linear"></div>
   </div>
 
+  <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ loadWrapRef }}" style="position:fixed; inset:0; z-index:200; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(24px,4vh,42px); background:radial-gradient(120% 90% at 50% 42%, #0B1B2C 0%, #05101C 46%, #03080F 100%); opacity:0; overflow:hidden">
+    <canvas ref="{{ loadStarRef }}" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
+    <div ref="{{ loadEarthWrapRef }}" style="position:relative; width:clamp(150px,22vw,250px); display:flex; align-items:center; justify-content:center; will-change:transform">
+      <div aria-hidden="true" style="position:absolute; inset:-30%; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(90,160,215,.3), rgba(6,14,26,0) 68%); filter:blur(10px)"></div>
+      <img ref="{{ loadEarthRef }}" src="assets/space/earth.png" alt="" aria-hidden="true" style="position:relative; width:100%; height:auto; filter:drop-shadow(0 24px 48px rgba(0,0,0,.75)); will-change:transform">
+    </div>
+    <div ref="{{ loadTextRef }}" style="position:relative; text-align:center">
+      <div style="font-size:10.5px; letter-spacing:.24em; color:#8E9AB0; margin-bottom:14px">LANDING TO PROJECT</div>
+      <div ref="{{ loadTitleRef }}" style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(21px,2.8vw,34px); letter-spacing:-.018em; color:#FFFFFF">Loading</div>
+      <div ref="{{ loadPctRef }}" style="margin-top:12px; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(15px,1.6vw,19px); letter-spacing:.04em; color:#E9BFA3">0%</div>
+      <div style="margin:20px auto 0; width:clamp(180px,26vw,260px); height:2px; border-radius:2px; background:rgba(255,255,255,.12); overflow:hidden">
+        <div ref="{{ loadBarRef }}" style="height:100%; width:100%; transform:scaleX(0); transform-origin:left center; background:linear-gradient(90deg,#4C86AE,#E9BFA3)"></div>
+      </div>
+    </div>
+    <div ref="{{ loadFlashRef }}" aria-hidden="true" style="position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0; background:radial-gradient(circle at 50% 50%, rgba(214,236,255,.95) 0%, rgba(150,200,240,.72) 38%, rgba(9,20,34,.35) 100%)"></div>
+  </div>
+  </sc-if>
+
   <!-- ===================== COSMIC BACKGROUND ===================== -->
   <div style="position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; background:radial-gradient(140% 90% at 78% -10%, #0C1C2E 0%, #061224 34%, #03080F 74%)">
     <div style="position:absolute; inset:0; opacity:.6; background:radial-gradient(60% 42% at 12% 78%, rgba(60,140,180,.24), transparent 70%), radial-gradient(45% 35% at 88% 20%, rgba(233,191,163,.10), transparent 70%)"></div>
@@ -107,7 +126,7 @@
         <div data-reveal="up" style="display:inline-flex; align-items:center; gap:10px; padding:8px 16px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); backdrop-filter:blur(22px) saturate(150%); -webkit-backdrop-filter:blur(22px) saturate(150%); font-size:11px; letter-spacing:.22em; color:#CFD6E4">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: rgb(124, 224, 168); box-shadow: rgb(124, 224, 168) 0px 0px 10px;"></span>OPEN TO NEW DESIGN CHALLENGES</div>
         <h1 data-reveal="up" style="margin:26px 0 0; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(46px,8.6vw,124px); line-height:.95; letter-spacing:-.02em; color:#FFFFFF; text-wrap:balance"><span style="display: inline-block; min-width: 2.7em; text-align: right"><span ref="{{ greetRef }}">Hi</span><span aria-hidden="true" style="display:inline-block; width:2px; height:.78em; margin:0 .06em -0.04em .08em; background:#E9BFA3; animation:om-caret 1s steps(1) infinite"></span></span>, I am <span style="background:linear-gradient(100deg,#F7DCC7,#E9BFA3 46%,#C9A9F5); -webkit-background-clip:text; background-clip:text; color:transparent">Isaac Bianchi</span></h1>
-        <p data-reveal="up" style="margin:26px 0 0; font-size:clamp(17px,2.1vw,27px); line-height:1.42; letter-spacing:-.015em; color:#E9EDF4">UI/UX &amp; Product Design Leader. Designing AI-first products.</p>
+        <p data-reveal="up" style="margin:26px 0 0; font-size:clamp(17px,2.1vw,27px); line-height:1.42; letter-spacing:-.015em; color:#E9EDF4">UX/UI &amp; Product Design Leader. Designing AI-first products.</p>
         <p data-reveal="up" style="margin:14px 0 0; font-size:clamp(14px,1.4vw,17px); line-height:1.6; color:#A4ACC0">Leading teams with empathy and purpose. Aligning user experience with business growth.</p>
         <div data-reveal="up" style="margin-top:38px; display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap">
           <a href="#works" style="display:inline-flex; align-items:center; gap:10px; min-height:48px; padding:14px 24px; border-radius:999px; font-size:14px; font-weight:500; color:#050D18; background:linear-gradient(140deg,#F7DCC7,#E9BFA3); box-shadow:0 14px 40px -14px rgba(233,191,163,.9); transition:transform .3s" style-hover="transform:translateY(-2px); box-shadow:0 18px 40px -12px rgba(233,191,163,.95)">See selected works <span style="opacity:.65">→</span></a>
@@ -116,9 +135,9 @@
       </div>
 
       <div data-reveal="up" style="margin-top:clamp(52px,9vh,104px); display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; border-radius:24px; overflow:hidden; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.07); backdrop-filter:blur(26px) saturate(150%); -webkit-backdrop-filter:blur(26px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 30px 80px -30px rgba(0,0,0,.9)">
-        <div style="padding:22px 24px; background:rgba(8,5,22,.42)"><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:34px; color:#FFFFFF">5+</div><div style="margin-top:4px; font-size:10.5px; letter-spacing:.16em; color:#939CB2">YEARS IN DESIGN</div></div>
+        <div style="padding:22px 24px; background:rgba(8,5,22,.42)"><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:34px; color:#FFFFFF">5+</div><div style="margin-top:4px; font-size:10.5px; letter-spacing:.16em; color:#939CB2">YEARS IN DESIGN FIELD</div></div>
         <div style="padding:22px 24px; background:rgba(8,5,22,.42)"><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:34px; color:#FFFFFF">10+</div><div style="margin-top:4px; font-size:10.5px; letter-spacing:.16em; color:#939CB2">DESIGNERS LED</div></div>
-        <div style="padding:22px 24px; background:rgba(8,5,22,.42)"><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:34px; color:#FFFFFF">20+</div><div style="margin-top:4px; font-size:10.5px; letter-spacing:.16em; color:#939CB2">PRODUCT DESIGNED -&nbsp;<span style="letter-spacing: 1.68px;">B2B, B2C</span></div></div>
+        <div style="padding:22px 24px; background:rgba(8,5,22,.42)"><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:34px; color:#FFFFFF">20+</div><div style="margin-top:4px; font-size:10.5px; letter-spacing:.16em; color:#939CB2">PRODUCTS DESIGNED -&nbsp;<span style="letter-spacing: 1.68px;">B2B, B2C</span></div></div>
         <div style="padding:22px 24px; background:rgba(8,5,22,.42)"><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:34px; color:#E9BFA3">1</div><div style="margin-top:4px; font-size:10.5px; letter-spacing:.16em; color:#939CB2">RED DOT WINNER · BEST OF THE BEST</div></div>
       </div>
     </section>
@@ -129,16 +148,16 @@
         <h2 data-reveal="up" style="margin:0; font-weight:300; font-size:clamp(34px,5.6vw,72px); line-height:1; letter-spacing:-.03em; color:#D5DAE6">About me</h2>
       </div>
 
-      <div data-reveal="up" data-grid2="1" style="position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:clamp(24px,3.4vw,52px); padding:clamp(26px,3.2vw,48px); border-radius:32px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.035) 46%, rgba(8,18,32,.74)); backdrop-filter:blur(28px) saturate(170%); -webkit-backdrop-filter:blur(28px) saturate(170%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 -1px 0 rgba(255,255,255,.07) inset, 0 40px 100px -32px rgba(0,0,0,.92)" data-desk-cols="minmax(0,1.15fr) minmax(0,1fr)">
+      <div data-reveal="up" data-grid2="1" style="position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:clamp(24px,3.4vw,52px); padding:clamp(26px,3.2vw,48px); border-radius:32px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.035) 46%, rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(170%); -webkit-backdrop-filter:blur(28px) saturate(170%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 -1px 0 rgba(255,255,255,.07) inset, 0 40px 100px -32px rgba(0,0,0,.92)" data-desk-cols="minmax(0,1.15fr) minmax(0,1fr)">
         <div>
           <div style="display:flex; align-items:center; gap:18px; margin-bottom:26px">
             <img src="assets/people/isaac.png" alt="Isaac Bianchi" style="flex:none; width:78px; height:78px; border-radius:50%; object-fit:cover; object-position:center 20%; border:1px solid rgba(255,255,255,.24); box-shadow:0 14px 32px -14px rgba(0,0,0,.85), 0 0 0 5px rgba(233,191,163,.12)">
             <div>
               <div style="font-size:16px; color:#FFFFFF">Isaac Bianchi</div>
-              <div style="margin-top:5px; font-size:11.5px; letter-spacing:.14em; color:#E9BFA3">UI/UX &amp; PRODUCT DESIGN LEADER</div>
+              <div style="margin-top:5px; font-size:11.5px; letter-spacing:.14em; color:#E9BFA3">UX/UI &amp; PRODUCT DESIGN LEADER</div>
             </div>
           </div>
-          <p style="margin:0; font-size:clamp(18px,1.7vw,25px); line-height:1.46; letter-spacing:-.018em; color:#FFFFFF">With <span style="color: rgb(233, 191, 163);">5+ years of experience</span> in Product Design, I build digital solutions and drive teams to bridge the gap between user needand business growth.</p>
+          <p style="margin:0; font-size:clamp(18px,1.7vw,25px); line-height:1.46; letter-spacing:-.018em; color:#FFFFFF">With <span style="color: rgb(233, 191, 163);">5+ years of experience</span> in Product Design, I build digital solutions and drive teams to bridge the gap between user needs and business growth.</p>
           <div style="margin-top:26px; display:flex; flex-wrap:wrap; gap:8px">
             <span style="padding:8px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.07); font-size:12px; color:#D5DAE6">AI-First Design</span>
             <span style="padding:8px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.07); font-size:12px; color:#D5DAE6">Design Systems</span>
@@ -154,14 +173,14 @@
       </div>
 
       <div data-reveal="up" style="margin-top:clamp(44px,7vh,86px); display:flex; justify-content:center">
-        <div style="position:relative; display:inline-flex; padding:5px; border-radius:999px; border:1px solid rgba(255,255,255,.16); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(8,18,32,.74)); backdrop-filter:blur(26px) saturate(160%); -webkit-backdrop-filter:blur(26px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.24) inset, 0 18px 44px -18px rgba(0,0,0,.85)">
+        <div style="position:relative; display:inline-flex; padding:5px; border-radius:999px; border:1px solid rgba(255,255,255,.16); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(5,12,22,.95)); backdrop-filter:blur(26px) saturate(160%); -webkit-backdrop-filter:blur(26px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.24) inset, 0 18px 44px -18px rgba(0,0,0,.85)">
           <sc-if value="{{ isCareer }}" hint-placeholder-val="{{ true }}">
-          <button onClick="{{ showCareer }}" style="position:relative; z-index:1; border:0; cursor:pointer; min-height:44px; padding:13px 26px; border-radius:999px; font-family:inherit; font-size:12px; letter-spacing:.16em; font-weight:600; color:#0A1420; background:linear-gradient(140deg,#FBEADC,#E9BFA3); box-shadow:0 8px 24px -8px rgba(233,191,163,.85), 0 1px 0 rgba(255,255,255,.6) inset">CAREER PATH</button>
           <button onClick="{{ showValues }}" style="position:relative; z-index:1; border:0; cursor:pointer; min-height:44px; padding:13px 26px; border-radius:999px; font-family:inherit; font-size:12px; letter-spacing:.16em; font-weight:600; color:#DCE2ED; background:transparent; box-shadow:none" style-hover="color:#F7DCC7; background:rgba(233,191,163,.18)">MY VALUES</button>
+          <button onClick="{{ showCareer }}" style="position:relative; z-index:1; border:0; cursor:pointer; min-height:44px; padding:13px 26px; border-radius:999px; font-family:inherit; font-size:12px; letter-spacing:.16em; font-weight:600; color:#0A1420; background:linear-gradient(140deg,#FBEADC,#E9BFA3); box-shadow:0 8px 24px -8px rgba(233,191,163,.85), 0 1px 0 rgba(255,255,255,.6) inset">MY EXPERIENCE</button>
           </sc-if>
           <sc-if value="{{ isValues }}" hint-placeholder-val="{{ false }}">
-          <button onClick="{{ showCareer }}" style="position:relative; z-index:1; border:0; cursor:pointer; min-height:44px; padding:13px 26px; border-radius:999px; font-family:inherit; font-size:12px; letter-spacing:.16em; font-weight:600; color:#DCE2ED; background:transparent; box-shadow:none" style-hover="color:#F7DCC7; background:rgba(233,191,163,.18)">CAREER PATH</button>
           <button onClick="{{ showValues }}" style="position:relative; z-index:1; border:0; cursor:pointer; min-height:44px; padding:13px 26px; border-radius:999px; font-family:inherit; font-size:12px; letter-spacing:.16em; font-weight:600; color:#0A1420; background:linear-gradient(140deg,#FBEADC,#E9BFA3); box-shadow:0 8px 24px -8px rgba(233,191,163,.85), 0 1px 0 rgba(255,255,255,.6) inset">MY VALUES</button>
+          <button onClick="{{ showCareer }}" style="position:relative; z-index:1; border:0; cursor:pointer; min-height:44px; padding:13px 26px; border-radius:999px; font-family:inherit; font-size:12px; letter-spacing:.16em; font-weight:600; color:#DCE2ED; background:transparent; box-shadow:none" style-hover="color:#F7DCC7; background:rgba(233,191,163,.18)">MY EXPERIENCE</button>
           </sc-if>
         </div>
       </div>
@@ -180,10 +199,10 @@
           <div style="position:relative; text-align:center; margin-bottom:clamp(16px,3vh,34px); font-size:11px; letter-spacing:.24em; color:#98A3BC; text-shadow:0 2px 12px rgba(3,9,18,.9)">MY EXPERIENCE</div>
         <div data-orow="1" style="position:relative; text-shadow:0 2px 14px rgba(3,9,18,.9), 0 0 30px rgba(3,9,18,.7); display:grid; grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr); gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(14px,1.8vh,22px) 0">
           <div data-oleft="1" style="text-align:right">
-            <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Jun 2026 – Dec 2026</div>
-            <div style="margin-top:6px; font-size:11px; letter-spacing:.16em; color:#E9BFA3">• CURRENT ROLE</div>
+            <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Jun 2026 – Current</div>
+            
           </div>
-          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(8,18,32,.62)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2.4" stroke="#E9BFA3" stroke-width="1.4"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M3 12.5h18" stroke="#E9BFA3" stroke-width="1.1" opacity=".6"></path></svg></span>
+          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(5,12,22,.9)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2.4" stroke="#E9BFA3" stroke-width="1.4"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M3 12.5h18" stroke="#E9BFA3" stroke-width="1.1" opacity=".6"></path></svg></span>
           <div>
             <div style="font-size:clamp(17px,1.8vw,24px); font-weight:400; color:#FFFFFF; letter-spacing:-.015em">Design Manager</div>
             <div style="margin-top:6px; font-size:13.5px; line-height:1.62; color:#B7C0D2">NiEW · Italy</div>
@@ -192,9 +211,9 @@
         <div data-orow="1" style="position:relative; text-shadow:0 2px 14px rgba(3,9,18,.9), 0 0 30px rgba(3,9,18,.7); display:grid; grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr); gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(14px,1.8vh,22px) 0">
           <div data-oleft="1" style="text-align:right">
             <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Jan 2026 – Jun 2026</div>
-            <div style="margin-top:6px; font-size:11px; letter-spacing:.16em; color:#7F8AA6">NIEW</div>
+            
           </div>
-          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(8,18,32,.62)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2.4" stroke="#E9BFA3" stroke-width="1.4"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M3 12.5h18" stroke="#E9BFA3" stroke-width="1.1" opacity=".6"></path></svg></span>
+          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(5,12,22,.9)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2.4" stroke="#E9BFA3" stroke-width="1.4"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M3 12.5h18" stroke="#E9BFA3" stroke-width="1.1" opacity=".6"></path></svg></span>
           <div>
             <div style="font-size:clamp(17px,1.8vw,24px); font-weight:400; color:#FFFFFF; letter-spacing:-.015em">Associate Design Manager</div>
             <div style="margin-top:6px; font-size:13.5px; line-height:1.62; color:#B7C0D2">NiEW · Italy</div>
@@ -203,9 +222,9 @@
         <div data-orow="1" style="position:relative; text-shadow:0 2px 14px rgba(3,9,18,.9), 0 0 30px rgba(3,9,18,.7); display:grid; grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr); gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(14px,1.8vh,22px) 0">
           <div data-oleft="1" style="text-align:right">
             <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Mar 2022 – Dec 2025</div>
-            <div style="margin-top:6px; font-size:11px; letter-spacing:.16em; color:#7F8AA6">NIEW</div>
+            
           </div>
-          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(8,18,32,.62)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2.4" stroke="#E9BFA3" stroke-width="1.4"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M3 12.5h18" stroke="#E9BFA3" stroke-width="1.1" opacity=".6"></path></svg></span>
+          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(5,12,22,.9)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2.4" stroke="#E9BFA3" stroke-width="1.4"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M3 12.5h18" stroke="#E9BFA3" stroke-width="1.1" opacity=".6"></path></svg></span>
           <div>
             <div style="font-size:clamp(17px,1.8vw,24px); font-weight:400; color:#FFFFFF; letter-spacing:-.015em">UI/UX Design Consultant</div>
             <div style="margin-top:6px; font-size:13.5px; line-height:1.62; color:#B7C0D2">NiEW · Italy</div>
@@ -214,9 +233,9 @@
         <div data-orow="1" style="position:relative; text-shadow:0 2px 14px rgba(3,9,18,.9), 0 0 30px rgba(3,9,18,.7); display:grid; grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr); gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(14px,1.8vh,22px) 0">
           <div data-oleft="1" style="text-align:right">
             <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Jan 2021 – Jan 2022</div>
-            <div style="margin-top:6px; font-size:11px; letter-spacing:.16em; color:#7F8AA6">UNIVERSITY</div>
+            
           </div>
-          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(8,18,32,.62)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 9 12 4.6 21.5 9 12 13.4 2.5 9Z" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M6.5 11v4.6c0 1.5 2.5 2.7 5.5 2.7s5.5-1.2 5.5-2.7V11" stroke="#E9BFA3" stroke-width="1.4"></path></svg></span>
+          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(5,12,22,.9)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 9 12 4.6 21.5 9 12 13.4 2.5 9Z" stroke="#E9BFA3" stroke-width="1.4"></path><path d="M6.5 11v4.6c0 1.5 2.5 2.7 5.5 2.7s5.5-1.2 5.5-2.7V11" stroke="#E9BFA3" stroke-width="1.4"></path></svg></span>
           <div>
             <div style="font-size:clamp(17px,1.8vw,24px); font-weight:400; color:#FFFFFF; letter-spacing:-.015em">Teacher Assistant</div>
             <div style="margin-top:6px; font-size:13.5px; line-height:1.62; color:#B7C0D2">University of San Marino</div>
@@ -233,7 +252,7 @@
             <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Bar Raiser by Instinct</div>
             <div style="margin-top:6px; font-size:11px; letter-spacing:.16em; color:#E9BFA3">CHALLENGING FOR THE BETTER</div>
           </div>
-          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(8,18,32,.62)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><span style="font-size:13px; letter-spacing:.05em; font-weight:500; color:#E9BFA3">01</span></span>
+          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(5,12,22,.9)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><span style="font-size:13px; letter-spacing:.05em; font-weight:500; color:#E9BFA3">01</span></span>
           <div>
             <div style="font-size:clamp(17px,1.8vw,24px); font-weight:400; color:#FFFFFF; letter-spacing:-.015em">Sky-high standards</div>
             <div style="margin-top:6px; font-size:13.5px; line-height:1.62; color:#B7C0D2">Constantly pushing boundaries and elevating standards. I do not settle for “good enough” but strive to inspire others to reach higher, turning every challenge into an opportunity for growth.</div>
@@ -244,7 +263,7 @@
             <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Outcome-Driven Attitude</div>
             <div style="margin-top:6px; font-size:11px; letter-spacing:.16em; color:#E9BFA3">PURSUING IMPACT, NOT OUTPUT</div>
           </div>
-          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(8,18,32,.62)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><span style="font-size:13px; letter-spacing:.05em; font-weight:500; color:#E9BFA3">02</span></span>
+          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(5,12,22,.9)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><span style="font-size:13px; letter-spacing:.05em; font-weight:500; color:#E9BFA3">02</span></span>
           <div>
             <div style="font-size:clamp(17px,1.8vw,24px); font-weight:400; color:#FFFFFF; letter-spacing:-.015em">Impact over volume</div>
             <div style="margin-top:6px; font-size:13.5px; line-height:1.62; color:#B7C0D2">Focusing on real-world results and meaningful change. I measure success by the business value created and the problems solved, rather than just the volume of work delivered.</div>
@@ -255,7 +274,7 @@
             <div style="font-size:clamp(15px,1.5vw,19px); font-weight:500; color:#FFFFFF; letter-spacing:-.01em">Collective Belief</div>
             <div style="margin-top:6px; font-size:11px; letter-spacing:.16em; color:#E9BFA3">ACCELERATING EACH OTHER</div>
           </div>
-          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(8,18,32,.62)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><span style="font-size:13px; letter-spacing:.05em; font-weight:500; color:#E9BFA3">03</span></span>
+          <span style="position:relative; flex:none; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.2); background:linear-gradient(150deg, rgba(255,255,255,.18), rgba(255,255,255,.05) 48%, rgba(5,12,22,.9)); backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%); box-shadow:0 1px 0 rgba(255,255,255,.42) inset, 0 -1px 0 rgba(255,255,255,.1) inset, 0 14px 30px -10px rgba(0,0,0,.85), 0 0 24px -10px rgba(233,191,163,.4)"><span style="font-size:13px; letter-spacing:.05em; font-weight:500; color:#E9BFA3">03</span></span>
           <div>
             <div style="font-size:clamp(17px,1.8vw,24px); font-weight:400; color:#FFFFFF; letter-spacing:-.015em">Faster, together</div>
             <div style="margin-top:6px; font-size:13.5px; line-height:1.62; color:#B7C0D2">Believing in the power of collaboration and shared vision. By empowering teammates and fostering open communication, we multiply our strengths and move faster together.</div>
@@ -275,7 +294,7 @@
       </div>
 
       <div data-svcgrid="1" data-desk-cols="repeat(12,1fr)" style="display:grid; grid-template-columns:repeat(12,1fr); gap:18px">
-        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 7; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(10,6,26,.44)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 7">
+        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 7; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(5,12,22,.89)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 7">
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><circle cx="15" cy="15" r="11.5" stroke="#E9BFA3" stroke-width="1.3"></circle><circle cx="15" cy="15" r="4" fill="#E9BFA3"></circle></svg>
             <span style="font-size:11px; letter-spacing:.18em; color:#828CA4">01 / VISION</span>
@@ -290,7 +309,7 @@
           </div>
         </div>
 
-        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 5; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(10,6,26,.44)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 5">
+        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 5; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(5,12,22,.89)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 5">
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="2" stroke="#E9BFA3" stroke-width="1.3"></rect><rect x="17" y="3" width="10" height="10" rx="2" fill="#E9BFA3"></rect><rect x="3" y="17" width="10" height="10" rx="2" fill="#E9BFA3"></rect><rect x="17" y="17" width="10" height="10" rx="2" stroke="#E9BFA3" stroke-width="1.3"></rect></svg>
             <span style="font-size:11px; letter-spacing:.18em; color:#828CA4">02 / SYSTEMS</span>
@@ -305,7 +324,7 @@
           </div>
         </div>
 
-        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 5; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(10,6,26,.44)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 5">
+        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 5; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(5,12,22,.89)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 5">
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><circle cx="15" cy="15" r="12" stroke="#E9BFA3" stroke-width="1.3"></circle><circle cx="15" cy="15" r="7" stroke="#E9BFA3" stroke-width="1.3"></circle><circle cx="15" cy="15" r="2.4" fill="#E9BFA3"></circle></svg>
             <span style="font-size:11px; letter-spacing:.18em; color:#828CA4">03 / STRATEGY</span>
@@ -320,7 +339,7 @@
           </div>
         </div>
 
-        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 7; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(10,6,26,.44)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 7">
+        <div data-reveal="up" data-lift="1" data-svccard="1" style="grid-column:span 7; position:relative; overflow:hidden; padding:clamp(24px,2.6vw,38px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(5,12,22,.89)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 30px 80px -30px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s, box-shadow .5s" style-hover="transform:translateY(-6px); border-color:rgba(233,191,163,.4); box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 40px 90px -30px rgba(0,0,0,.95), 0 0 70px -24px rgba(233,191,163,.55)" data-desk-span="span 7">
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><circle cx="11" cy="12" r="6" stroke="#E9BFA3" stroke-width="1.3"></circle><circle cx="20.5" cy="17" r="6" stroke="#E9BFA3" stroke-width="1.3" opacity=".55"></circle></svg>
             <span style="font-size:11px; letter-spacing:.18em; color:#828CA4">04 / LEADERSHIP</span>
@@ -341,7 +360,7 @@
     <section style="position:relative; padding:clamp(48px,7vh,90px) 0" data-om-label="Clients">
       <div data-reveal="up" style="text-align:center; font-size:11px; letter-spacing:.24em; color:#828CA4; margin-bottom:38px">TOP CUSTOMERS I WORKED FOR</div>
       <div style="position:relative; overflow:hidden; mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)">
-        <div style="display:flex; width:max-content; align-items:center; gap:clamp(44px,6vw,86px); padding:0 43px; animation:om-marquee 44s linear infinite">
+        <div style="display:flex; width:max-content; align-items:center; gap:clamp(44px,6vw,86px); padding:0 43px; animation:om-marquee 35s linear infinite">
           <img src="assets/logos/lamborghini.svg" alt="Lamborghini" style="height:32px; width:auto; opacity:.5; filter:brightness(0) invert(1)">
           <img src="assets/logos/cnh.svg" alt="CNH Industrial" style="height:34px; width:auto; opacity:.5; filter:brightness(0) invert(1)">
           <img src="assets/logos/tetrapak.svg" alt="Tetra Pak" style="height:30px; width:auto; opacity:.5; filter:brightness(0) invert(1)">
@@ -370,7 +389,7 @@
       </div>
 
       <div data-stackwrap="1">
-        <div data-stack="0" data-reveal="up" onClick="{{ openIms }}" style="position:sticky; top:104px; margin-bottom:26px; cursor:pointer; overflow:hidden; border-radius:32px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.04) 44%, rgba(8,18,32,.78)); backdrop-filter:blur(22px) saturate(155%); -webkit-backdrop-filter:blur(22px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 -1px 0 rgba(255,255,255,.05) inset, 0 40px 100px -34px rgba(0,0,0,.95); transition:border-color .5s, box-shadow .5s, transform .35s cubic-bezier(.2,.9,.2,1)" style-hover="border-color:rgba(233,191,163,.45); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 44px 110px -34px rgba(0,0,0,.95), 0 0 90px -28px rgba(233,191,163,.55)">
+        <div data-stack="0" data-reveal="up" onClick="{{ openIms }}" style="position:sticky; top:104px; margin-bottom:26px; cursor:pointer; overflow:hidden; border-radius:32px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.04) 44%, rgba(5,12,22,.96)); backdrop-filter:blur(22px) saturate(155%); -webkit-backdrop-filter:blur(22px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 -1px 0 rgba(255,255,255,.05) inset, 0 40px 100px -34px rgba(0,0,0,.95); transition:border-color .5s, box-shadow .5s, transform .35s cubic-bezier(.2,.9,.2,1)" style-hover="border-color:rgba(233,191,163,.45); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 44px 110px -34px rgba(0,0,0,.95), 0 0 90px -28px rgba(233,191,163,.55)">
           <div data-projgrid="1" style="display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); align-items:stretch" data-desk-cols="minmax(0,.92fr) minmax(0,1.08fr)">
             <div style="padding:clamp(28px,3.4vw,54px); display:flex; flex-direction:column; justify-content:center">
               <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px">
@@ -379,17 +398,17 @@
               </div>
               <h3 style="margin:0 0 14px; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(28px,3.2vw,46px); line-height:1.05; letter-spacing:-.015em; color:#FFFFFF">Next-Gen HMI Redesign</h3>
               <p style="margin:0 0 26px; max-width:48ch; font-size:14.5px; line-height:1.68; color:#A4ACC0">Transforming legacy industrial controls into a unified corporate HMI ecosystem, streamlining operator workflows and driving a boost in operational efficiency.</p>
-              <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)"><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">HMI Redesign</span><span aria-hidden="true" style="width:1px; height:13px; background:rgba(255,255,255,.24)"></span><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">B2B Product</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:.06em; color:#E9BFA3; transition:gap .3s" style-hover="gap:14px">View case study <span>→</span></span></div>
+              <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)"><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">HMI Redesign</span><span aria-hidden="true" style="width:1px; height:13px; background:rgba(255,255,255,.24)"></span><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">B2B Product</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:.06em; color:#E9BFA3; transition:gap .3s" style-hover="gap:14px">Go to project<span>→</span></span></div>
             </div>
             <div style="position:relative; min-height:340px; display:flex">
               <div data-device="tablet" style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:clamp(20px,2.6vw,38px); background:radial-gradient(120% 100% at 68% 16%, rgba(70,150,195,.34), rgba(5,13,24,.25) 62%); overflow:hidden">
             <div aria-hidden="true" style="position:absolute; left:50%; bottom:7%; transform:translateX(-50%); width:70%; height:15%; border-radius:50%; filter:blur(26px); background:radial-gradient(closest-side, rgba(0,0,0,.72), rgba(0,0,0,0))"></div>
             <div style="width:100%; max-width:640px; perspective:1700px; perspective-origin:50% 45%">
-              <div style="position:relative; transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.1s both, om-dev-orbit-land 16s ease-in-out 1.6s infinite; filter:drop-shadow(0 42px 60px rgba(0,0,0,.62))">
+              <div style="position:relative; transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.1s both; filter:drop-shadow(0 42px 60px rgba(0,0,0,.62))">
                 <div style="position:relative; border-radius:22px; padding:2.4%; background:linear-gradient(146deg,#F0F2F6 0%,#A7AEBB 16%,#767D8B 38%,#C8CED8 58%,#616874 82%,#9BA2AF 100%); box-shadow:inset 0 0 0 1px rgba(255,255,255,.6), inset 0 -2px 8px rgba(0,0,0,.45), inset 0 2px 5px rgba(255,255,255,.45)">
                   <div style="position:relative; width:100%; aspect-ratio:16 / 9; border-radius:13px; overflow:hidden; background:#04070E; box-shadow:inset 0 0 0 2.5px #05080F">
                     <div style="position:absolute; inset:0; border-radius:12px; overflow:hidden; background:#050D18">
-              <img src="assets/ims/offloading.svg" alt="Next-gen HMI production monitoring screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1">
+              <img src="assets/ims/dashboard-3d.jpg" alt="Next-gen HMI dashboard with configured widgets and 3D machine layout" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1">
               <div aria-hidden="true" style="position:absolute; inset:0; z-index:4; pointer-events:none; box-shadow:inset 0 0 30px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12); background:linear-gradient(128deg, rgba(255,255,255,.15) 0%, rgba(255,255,255,.045) 20%, rgba(255,255,255,0) 44%)"></div>
               <div aria-hidden="true" style="position:absolute; top:0; bottom:0; left:0; width:32%; z-index:5; pointer-events:none; background:linear-gradient(90deg, rgba(255,255,255,.4), rgba(255,255,255,0)); animation:om-dev-sheen 8s ease-in-out 2.1s infinite"></div>
               <div aria-hidden="true" style="position:absolute; inset:0; z-index:6; pointer-events:none; background:#DCE9F7; animation:om-dev-wake 2.6s ease-out 0.1s both"></div>
@@ -406,7 +425,7 @@
           </div>
         </div>
 
-        <div data-stack="1" data-reveal="up" onClick="{{ openDl }}" style="position:sticky; top:126px; margin-bottom:26px; cursor:pointer; overflow:hidden; border-radius:32px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.04) 44%, rgba(8,18,32,.78)); backdrop-filter:blur(22px) saturate(155%); -webkit-backdrop-filter:blur(22px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 40px 100px -34px rgba(0,0,0,.95); transition:border-color .5s, box-shadow .5s, transform .35s cubic-bezier(.2,.9,.2,1)" style-hover="border-color:rgba(233,191,163,.45); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 44px 110px -34px rgba(0,0,0,.95), 0 0 90px -28px rgba(233,191,163,.55)">
+        <div data-stack="1" data-reveal="up" onClick="{{ openDl }}" style="position:sticky; top:126px; margin-bottom:26px; cursor:pointer; overflow:hidden; border-radius:32px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.04) 44%, rgba(5,12,22,.96)); backdrop-filter:blur(22px) saturate(155%); -webkit-backdrop-filter:blur(22px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 40px 100px -34px rgba(0,0,0,.95); transition:border-color .5s, box-shadow .5s, transform .35s cubic-bezier(.2,.9,.2,1)" style-hover="border-color:rgba(233,191,163,.45); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 44px 110px -34px rgba(0,0,0,.95), 0 0 90px -28px rgba(233,191,163,.55)">
           <div data-projgrid="1" style="display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); align-items:stretch" data-desk-cols="minmax(0,.92fr) minmax(0,1.08fr)">
             <div style="padding:clamp(28px,3.4vw,54px); display:flex; flex-direction:column; justify-content:center">
               <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px">
@@ -415,13 +434,13 @@
               </div>
               <h3 style="margin:0 0 14px; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(28px,3.2vw,46px); line-height:1.05; letter-spacing:-.015em; color:#FFFFFF">Self-Shopping Mobile App</h3>
               <p style="margin:0 0 26px; max-width:48ch; font-size:14.5px; line-height:1.68; color:#A4ACC0">End-to-end design of an enterprise mobile self-shopping application for a retail market leader, serving 10+ million users with real-time cart tracking and seamless checkout.</p>
-              <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)"><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">UX/UI Design</span><span aria-hidden="true" style="width:1px; height:13px; background:rgba(255,255,255,.24)"></span><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">Mobile Retail</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:.06em; color:#E9BFA3; transition:gap .3s" style-hover="gap:14px">View case study <span>→</span></span></div>
+              <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)"><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">UX/UI Design</span><span aria-hidden="true" style="width:1px; height:13px; background:rgba(255,255,255,.24)"></span><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">Mobile Retail</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:.06em; color:#E9BFA3; transition:gap .3s" style-hover="gap:14px">Go to project<span>→</span></span></div>
             </div>
             <div style="position:relative; min-height:340px; display:flex">
               <div data-device="phone" style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:clamp(12px,2vw,22px); background:radial-gradient(120% 100% at 68% 16%, rgba(70,150,195,.34), rgba(5,13,24,.25) 62%); overflow:hidden">
             <div aria-hidden="true" style="position:absolute; left:50%; bottom:6%; transform:translateX(-50%); width:78%; height:14%; border-radius:50%; filter:blur(26px); background:radial-gradient(closest-side, rgba(0,0,0,.72), rgba(0,0,0,0))"></div>
             <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; gap:clamp(18px,3.4vw,48px); perspective:1600px; perspective-origin:50% 45%">
-              <div style="position:relative; z-index:1; height:84%; width:auto; aspect-ratio:480 / 854; margin-top:0%; transform-style:preserve-3d; animation:om-dev-in-port 1.5s cubic-bezier(.16,.84,.24,1) 0.12s both, om-dev-orbit-duo-l 16s ease-in-out 1.62s infinite; filter:drop-shadow(0 30px 44px rgba(0,0,0,.7))">
+              <div style="position:relative; z-index:1; height:84%; width:auto; aspect-ratio:480 / 854; margin-top:0%; transform-style:preserve-3d; animation:om-dev-in-port 1.5s cubic-bezier(.16,.84,.24,1) 0.12s both; filter:drop-shadow(0 30px 44px rgba(0,0,0,.7))">
                 <div style="position:absolute; inset:0; border-radius:9%; padding:1.9%; background:linear-gradient(146deg,#F0F2F6 0%,#A7AEBB 16%,#767D8B 38%,#C8CED8 58%,#616874 82%,#9BA2AF 100%); box-shadow:inset 0 0 0 1px rgba(255,255,255,.62), inset 0 -2px 7px rgba(0,0,0,.5), inset 0 2px 5px rgba(255,255,255,.42)">
                   <div style="position:relative; width:100%; height:100%; border-radius:7.6%; overflow:hidden; background:#04070E; box-shadow:inset 0 0 0 2px #05080F">
                     <img src="assets/dl/payment.jpg" alt="Checkout and payment screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1">
@@ -435,7 +454,7 @@
                 <div aria-hidden="true" style="position:absolute; left:-1.1%; top:16%; width:1.4%; height:4.5%; border-radius:2px; background:linear-gradient(180deg,#D6DAE2,#7A8290)"></div>
                 <div aria-hidden="true" style="position:absolute; left:-1.1%; top:23.5%; width:1.4%; height:7.5%; border-radius:2px; background:linear-gradient(180deg,#D6DAE2,#7A8290)"></div>
               </div>
-              <div style="position:relative; z-index:2; height:84%; width:auto; aspect-ratio:480 / 854; margin-top:0%; transform-style:preserve-3d; animation:om-dev-in-port 1.5s cubic-bezier(.16,.84,.24,1) 0.22s both, om-dev-orbit-duo-r 16s ease-in-out 1.72s infinite; filter:drop-shadow(0 30px 44px rgba(0,0,0,.7))">
+              <div style="position:relative; z-index:2; height:84%; width:auto; aspect-ratio:480 / 854; margin-top:0%; transform-style:preserve-3d; animation:om-dev-in-port 1.5s cubic-bezier(.16,.84,.24,1) 0.22s both; filter:drop-shadow(0 30px 44px rgba(0,0,0,.7))">
                 <div style="position:absolute; inset:0; border-radius:9%; padding:1.9%; background:linear-gradient(146deg,#F0F2F6 0%,#A7AEBB 16%,#767D8B 38%,#C8CED8 58%,#616874 82%,#9BA2AF 100%); box-shadow:inset 0 0 0 1px rgba(255,255,255,.62), inset 0 -2px 7px rgba(0,0,0,.5), inset 0 2px 5px rgba(255,255,255,.42)">
                   <div style="position:relative; width:100%; height:100%; border-radius:7.6%; overflow:hidden; background:#04070E; box-shadow:inset 0 0 0 2px #05080F">
                     <img src="assets/dl/detail.jpg" alt="Article detail screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1">
@@ -455,7 +474,7 @@
           </div>
         </div>
 
-        <div data-stack="2" data-reveal="up" onClick="{{ openOps }}" style="position:sticky; top:148px; cursor:pointer; overflow:hidden; border-radius:32px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.04) 44%, rgba(8,18,32,.78)); backdrop-filter:blur(22px) saturate(155%); -webkit-backdrop-filter:blur(22px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 40px 100px -34px rgba(0,0,0,.95); transition:border-color .5s, box-shadow .5s, transform .35s cubic-bezier(.2,.9,.2,1)" style-hover="border-color:rgba(233,191,163,.45); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 44px 110px -34px rgba(0,0,0,.95), 0 0 90px -28px rgba(233,191,163,.55)">
+        <div data-stack="2" data-reveal="up" onClick="{{ openOps }}" style="position:sticky; top:148px; cursor:pointer; overflow:hidden; border-radius:32px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.04) 44%, rgba(5,12,22,.96)); backdrop-filter:blur(22px) saturate(155%); -webkit-backdrop-filter:blur(22px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 40px 100px -34px rgba(0,0,0,.95); transition:border-color .5s, box-shadow .5s, transform .35s cubic-bezier(.2,.9,.2,1)" style-hover="border-color:rgba(233,191,163,.45); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 44px 110px -34px rgba(0,0,0,.95), 0 0 90px -28px rgba(233,191,163,.55)">
           <div data-projgrid="1" style="display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); align-items:stretch" data-desk-cols="minmax(0,.92fr) minmax(0,1.08fr)">
             <div style="padding:clamp(28px,3.4vw,54px); display:flex; flex-direction:column; justify-content:center">
               <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px">
@@ -464,13 +483,13 @@
               </div>
               <h3 style="margin:0 0 14px; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(28px,3.2vw,46px); line-height:1.05; letter-spacing:-.015em; color:#FFFFFF">Production Software Design &amp; PM</h3>
               <p style="margin:0 0 26px; max-width:48ch; font-size:14.5px; line-height:1.68; color:#A4ACC0">End-to-end redesign and management of a software for Production Management, for a global leader in sheet metal machinery. Encompassed product redesign, development QA and Project Management.</p>
-              <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)"><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">Project Management</span><span aria-hidden="true" style="width:1px; height:13px; background:rgba(255,255,255,.24)"></span><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">SaaS Product</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:.06em; color:#E9BFA3; transition:gap .3s" style-hover="gap:14px">View case study <span>→</span></span></div>
+              <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)"><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">Project Management</span><span aria-hidden="true" style="width:1px; height:13px; background:rgba(255,255,255,.24)"></span><span style="font-size:12.5px; letter-spacing:.06em; color:#C5CDDC">SaaS Product</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; letter-spacing:.06em; color:#E9BFA3; transition:gap .3s" style-hover="gap:14px">Go to project<span>→</span></span></div>
             </div>
             <div style="position:relative; min-height:340px; display:flex">
               <div data-device="laptop" style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:clamp(20px,2.6vw,38px); background:radial-gradient(120% 100% at 68% 16%, rgba(70,150,195,.34), rgba(5,13,24,.25) 62%); overflow:hidden">
             <div aria-hidden="true" style="position:absolute; left:50%; bottom:7%; transform:translateX(-50%); width:70%; height:15%; border-radius:50%; filter:blur(26px); background:radial-gradient(closest-side, rgba(0,0,0,.72), rgba(0,0,0,0))"></div>
             <div style="width:100%; max-width:620px; perspective:1700px; perspective-origin:50% 42%">
-              <div style="transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.1s both, om-dev-orbit-land 16s ease-in-out 1.6s infinite; filter:drop-shadow(0 44px 62px rgba(0,0,0,.62))">
+              <div style="transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.1s both; filter:drop-shadow(0 44px 62px rgba(0,0,0,.62))">
                 <div style="position:relative; border-radius:17px 17px 5px 5px; padding:10px; background:linear-gradient(158deg,#E2E6ED 0%,#B2B9C6 14%,#7C8391 40%,#4E5461 72%,#2B303A 100%); box-shadow:inset 0 1.5px 0 rgba(255,255,255,.85), inset 0 -1px 0 rgba(0,0,0,.6)">
                   <div style="position:relative; width:100%; aspect-ratio:16 / 9; border-radius:9px; overflow:hidden; background:#04070E; box-shadow:inset 0 0 0 2px #05080F, 0 0 0 1px rgba(255,255,255,.1)">
                     <div style="position:absolute; inset:0; border-radius:8px; overflow:hidden; background:#050D18">
@@ -501,22 +520,22 @@
       <div style="text-align:center; margin-bottom:clamp(30px,5vh,54px)">
         <span data-reveal="up" style="display:inline-block; padding:8px 18px; border-radius:999px; border:1px solid rgba(233,191,163,.26); background:rgba(233,191,163,.07); font-size:11px; letter-spacing:.2em; color:#E9BFA3">AI-AUGMENTED UX / UI SHOWCASE</span>
         <h2 data-reveal="up" style="margin:18px 0 0; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,72px); line-height:1; letter-spacing:-.015em; color:#FFFFFF">AI-based works</h2>
-        <p data-reveal="up" style="margin:16px auto 0; max-width:58ch; font-size:14.5px; line-height:1.66; color:#A4ACC0">Generative UX prototypes, automated design system workflows, and synthetic testing experiments engineered for maximum impact.</p>
+        <p data-reveal="up" style="margin:16px auto 0; max-width:58ch; font-size:14.5px; line-height:1.66; color:#A4ACC0">AI-based activities on real projects to automate the workflow and maximize impact.</p>
       </div>
 
       <div style="display:flex; flex-direction:column; gap:20px">
-        <div data-reveal="up" style="position:relative; overflow:hidden; padding:clamp(24px,3vw,46px); border-radius:32px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(8,18,32,.74)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
+        <div data-reveal="up" style="position:relative; overflow:hidden; padding:clamp(24px,3vw,46px); border-radius:32px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
           <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:20px">
             <h3 style="margin:0; flex:1; min-width:280px; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(22px,2.4vw,32px); color:#FFFFFF">Automated HMI Usability &amp; Accessibility Expert Review</h3>
             <div style="box-sizing: border-box; display: flex; flex-direction: row; gap: 12px"><span style="flex: none; padding: 9px 16px; border-radius: 999px; background: linear-gradient(140deg,#F7DCC7,#E9BFA3); font-size: 10.5px; letter-spacing: .14em; font-weight: 500; color: #050D18; box-shadow: 0 10px 26px -12px rgba(233,191,163,.9)">✦ CLAUDE<br></span><span style="flex: none; padding: 9px 16px; border-radius: 999px; background: linear-gradient(140deg,#F7DCC7,#E9BFA3); font-size: 10.5px; letter-spacing: .14em; font-weight: 500; color: #050D18; box-shadow: 0 10px 26px -12px rgba(233,191,163,.9)">✦ AIRTABLE AI<br></span></div>
           </div>
-          <p style="margin:0 0 26px; width:100%; font-size:14.5px; line-height:1.7; color:#CFD6E4">Architected an automated AI expert review engine to audit a complex HMI (Human-Machine Interface), identifying usability friction points and accessibility gaps prior to the platform redesign.</p>
+          <p style="margin:0 0 26px; width:100%; font-size:14.5px; line-height:1.7; color:#CFD6E4">Architected an automated AI expert review engine to audit a complex HMI, identifying usability friction points and accessibility gaps prior to the platform redesign.</p>
 
           <div data-grid2="1" style="display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:clamp(22px,3vw,40px); align-items:start" data-desk-cols="minmax(0,1.5fr) minmax(0,1fr)">
             <div data-device="laptop" style="position:relative; width:100%; display:flex; align-items:center; justify-content:center; padding:clamp(16px,2.2vw,30px); border-radius:20px; background:radial-gradient(120% 100% at 68% 16%, rgba(70,150,195,.3), rgba(5,13,24,.3) 62%); overflow:hidden">
               <div aria-hidden="true" style="position:absolute; left:50%; bottom:8%; transform:translateX(-50%); width:66%; height:14%; border-radius:50%; filter:blur(24px); background:radial-gradient(closest-side, rgba(0,0,0,.7), rgba(0,0,0,0))"></div>
               <div style="width:100%; max-width:620px; perspective:1700px; perspective-origin:50% 42%">
-                <div style="transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.1s both, om-dev-orbit-land 16s ease-in-out 1.6s infinite; filter:drop-shadow(0 38px 54px rgba(0,0,0,.6))">
+                <div style="transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.1s both; filter:drop-shadow(0 38px 54px rgba(0,0,0,.6))">
                   <div style="position:relative; border-radius:15px 15px 5px 5px; padding:9px; background:linear-gradient(158deg,#E2E6ED 0%,#B2B9C6 14%,#7C8391 40%,#4E5461 72%,#2B303A 100%); box-shadow:inset 0 1.5px 0 rgba(255,255,255,.85), inset 0 -1px 0 rgba(0,0,0,.6)">
                     <div style="position:relative; width:100%; aspect-ratio:16 / 9; border-radius:8px; overflow:hidden; background:#04070E; box-shadow:inset 0 0 0 2px #05080F, 0 0 0 1px rgba(255,255,255,.1)">
                       <video src="assets/ai/expert-review.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto" data-autoplay="1" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#04070E; z-index:2"></video>
@@ -535,16 +554,16 @@
             <div>
               <div style="display:flex; flex-wrap:wrap; gap:26px 30px">
                 <div style="min-width:96px">
-                  <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(26px,2.6vw,34px); line-height:1; color:#FFFFFF">12h</div>
-                  <div style="margin-top:7px; font-size:9.5px; letter-spacing:.13em; color:#98A3BC">REVIEW TIME</div>
+                  <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(26px,2.6vw,34px); line-height:1; color:#FFFFFF">12hrs</div>
+                  <div style="margin-top:7px; font-size:9.5px; letter-spacing:.13em; color:#98A3BC">TOTAL TIME</div>
                 </div>
-                <div style="min-width:96px">
-                  <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(26px,2.6vw,34px); line-height:1; color:#FFFFFF">10x</div>
-                  <div style="margin-top:7px; font-size:9.5px; letter-spacing:.13em; color:#98A3BC">TIME OPTIMIZED</div>
-                </div>
+                
                 <div style="min-width:96px">
                   <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(26px,2.6vw,34px); line-height:1; color:#FFFFFF">60+</div>
                   <div style="margin-top:7px; font-size:9.5px; letter-spacing:.13em; color:#98A3BC">AUDITED POINTS</div>
+                </div><div style="min-width:96px">
+                  <div style="font-family: 'Sora','Space Grotesk',sans-serif; font-weight: 300; font-size: clamp(26px,2.6vw,34px); line-height: 1; color: #E9BFA3">10x</div>
+                  <div style="margin-top:7px; font-size:9.5px; letter-spacing:.13em; color:#98A3BC">TIME OPTIMIZED</div>
                 </div>
               </div>
               <div style="margin-top:30px; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">AI EXECUTION PIPELINE</div>
@@ -552,14 +571,14 @@
                 <div style="display:flex; gap:14px; align-items:flex-start">
                   <span style="flex:none; width:24px; height:24px; border-radius:50%; border:1px solid rgba(233,191,163,.42); background:rgba(233,191,163,.08); display:flex; align-items:center; justify-content:center; font-size:11px; color:#E9BFA3">1</span>
                   <div>
-                    <div style="font-size:14px; font-weight:500; color:#FFFFFF">Heuristic Knowledge Base</div>
-                    <div style="margin-top:5px; font-size:12.5px; line-height:1.6; color:#98A3BC">Encoded Nielsen heuristics and WCAG criteria.</div>
+                    <div style="font-size:14px; font-weight:500; color:#FFFFFF">Setup instructions for LLM</div>
+                    <div style="margin-top:5px; font-size:12.5px; line-height:1.6; color:#98A3BC">Definition of key instructions for training the model in Claude, including accessibility documentation (ISA:101 and IEC 63303 standards).</div>
                   </div>
                 </div>
                 <div style="display:flex; gap:14px; align-items:flex-start">
                   <span style="flex:none; width:24px; height:24px; border-radius:50%; border:1px solid rgba(233,191,163,.42); background:rgba(233,191,163,.08); display:flex; align-items:center; justify-content:center; font-size:11px; color:#E9BFA3">2</span>
                   <div>
-                    <div style="font-size:14px; font-weight:500; color:#FFFFFF">Custom MCP Screen Ingestion</div>
+                    <div style="font-size:14px; font-weight:500; color:#FFFFFF">Airtable MCP Integration</div>
                     <div style="margin-top:5px; font-size:12.5px; line-height:1.6; color:#98A3BC">Piped live design files into the model through a purpose-built MCP server</div>
                   </div>
                 </div>
@@ -573,7 +592,7 @@
                 <div style="display:flex; gap:14px; align-items:flex-start">
                   <span style="flex:none; width:24px; height:24px; border-radius:50%; border:1px solid rgba(233,191,163,.42); background:rgba(233,191,163,.08); display:flex; align-items:center; justify-content:center; font-size:11px; color:#E9BFA3">4</span>
                   <div>
-                    <div style="font-size:14px; font-weight:500; color:#FFFFFF">Remediation &amp; Pattern Extraction</div>
+                    <div style="font-size:14px; font-weight:500; color:#FFFFFF">Pattern Extraction</div>
                     <div style="margin-top:5px; font-size:12.5px; line-height:1.6; color:#98A3BC">Synthesized 60+ issues into remediation guidelines and 20 reusable UI patterns</div>
                   </div>
                 </div>
@@ -587,7 +606,7 @@
           </div>
         </div>
 
-        <div data-reveal="up" style="position:relative; overflow:hidden; padding:clamp(24px,3vw,46px); border-radius:32px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(8,18,32,.74)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
+        <div data-reveal="up" style="position:relative; overflow:hidden; padding:clamp(24px,3vw,46px); border-radius:32px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.125), rgba(255,255,255,.035) 46%, rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
           <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:20px">
             <h3 style="margin:0; flex:1; min-width:280px; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(22px,2.4vw,32px); color:#FFFFFF">Executive Recruiting &amp; People Management Dashboard</h3>
             <span style="flex:none; padding:9px 16px; border-radius:999px; background:linear-gradient(140deg,#F7DCC7,#E9BFA3); font-size:10.5px; letter-spacing:.14em; font-weight:500; color:#050D18; box-shadow:0 10px 26px -12px rgba(233,191,163,.9)">✦ FIGMA MAKE</span>
@@ -598,7 +617,7 @@
             <div data-device="laptop" style="position:relative; width:100%; display:flex; align-items:center; justify-content:center; padding:clamp(16px,2.2vw,30px); border-radius:20px; background:radial-gradient(120% 100% at 68% 16%, rgba(70,150,195,.3), rgba(5,13,24,.3) 62%); overflow:hidden">
               <div aria-hidden="true" style="position:absolute; left:50%; bottom:8%; transform:translateX(-50%); width:66%; height:14%; border-radius:50%; filter:blur(24px); background:radial-gradient(closest-side, rgba(0,0,0,.7), rgba(0,0,0,0))"></div>
               <div style="width:100%; max-width:620px; perspective:1700px; perspective-origin:50% 42%">
-                <div style="transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.15s both, om-dev-orbit-land 16s ease-in-out 1.65s infinite; filter:drop-shadow(0 38px 54px rgba(0,0,0,.6))">
+                <div style="transform-style:preserve-3d; animation:om-dev-in-land 1.5s cubic-bezier(.16,.84,.24,1) 0.15s both; filter:drop-shadow(0 38px 54px rgba(0,0,0,.6))">
                   <div style="position:relative; border-radius:15px 15px 5px 5px; padding:9px; background:linear-gradient(158deg,#E2E6ED 0%,#B2B9C6 14%,#7C8391 40%,#4E5461 72%,#2B303A 100%); box-shadow:inset 0 1.5px 0 rgba(255,255,255,.85), inset 0 -1px 0 rgba(0,0,0,.6)">
                     <div style="position:relative; width:100%; aspect-ratio:16 / 9; border-radius:8px; overflow:hidden; background:#04070E; box-shadow:inset 0 0 0 2px #05080F, 0 0 0 1px rgba(255,255,255,.1)">
                       <video src="assets/recruiting-dashboard.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto" data-autoplay="1" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#04070E; z-index:2"></video>
@@ -626,7 +645,7 @@
                 </div>
                 <div style="min-width:96px">
                   <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(26px,2.6vw,34px); line-height:1; color:#E9BFA3">5x</div>
-                  <div style="margin-top:7px; font-size:9.5px; letter-spacing:.13em; color:#98A3BC">SPEED BOOST</div>
+                  <div style="margin-top:7px; font-size:9.5px; letter-spacing:.13em; color:#98A3BC">TIME OPTIMIZED</div>
                 </div>
               </div>
               <div style="margin-top:30px; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">AI EXECUTION PIPELINE</div>
@@ -671,28 +690,28 @@
         <p data-reveal="up" style="margin:16px auto 0; max-width:58ch; font-size:14.5px; line-height:1.66; color:#A4ACC0">Perspectives from industry leaders, collaborators, and partners on driving strategic impact and innovation together.</p>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px">
-        <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(8,18,32,.72)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
+        <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
           <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:44px; line-height:.6; color:rgba(233,191,163,.5)">“</div>
           <p style="flex:1; margin:18px 0 24px; font-size:14.5px; line-height:1.68; color:#E4E9F2">Isaac has an incredible eye for micro-interactions. He brought our wearable app to life with subtle, delightful animations that made the entire experience feel premium, organic, and memorable.</p>
           <div style="margin-top:auto; display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14)">
-            <span style="flex:none; width:38px; height:38px; border-radius:50%; background:linear-gradient(140deg,rgba(255,255,255,.16),rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; font-size:12.5px; color:#CFD6E4">ER</span>
-            <div><div style="font-size:14px; color:#FFFFFF">Elena Rostova</div><div style="font-size:12px; color:#E9BFA3">Founder, Aura Wearables</div></div>
+            <img src="assets/people/isabel.png" alt="Isabel Pizzi" data-endav="1" style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; object-position:center 20%; border:1px solid rgba(255,255,255,.24); box-shadow:0 8px 20px -8px rgba(0,0,0,.85)">
+            <div><div style="font-size:14px; color:#FFFFFF">Isabel Pizzi</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">Growth Director at NiEW, Ex Amazon</div></div>
           </div>
         </div>
-        <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(8,18,32,.72)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
+        <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
           <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:44px; line-height:.6; color:rgba(233,191,163,.5)">“</div>
           <p style="flex:1; margin:18px 0 24px; font-size:14.5px; line-height:1.68; color:#E4E9F2">Isaac’s ability to turn complex industrial processes into clear digital strategy transformed our key engagements. He is a standout leader who seamlessly balances executive alignment with proactive, high-rigor execution.</p>
           <div style="margin-top:auto; display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14)">
-            <span style="flex:none; width:38px; height:38px; border-radius:50%; background:linear-gradient(140deg,rgba(233,191,163,.32),rgba(233,191,163,.06)); border:1px solid rgba(233,191,163,.3); display:flex; align-items:center; justify-content:center; font-size:12.5px; color:#F7DCC7">SJ</span>
-            <div><div style="font-size:14px; color:#FFFFFF">Sarah Jenkins</div><div style="font-size:12px; color:#E9BFA3">CEO, NiEW</div></div>
+            <img src="assets/people/andrea.jpg" alt="Andrea Violante" data-endav="1" style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; object-position:center 20%; border:1px solid rgba(255,255,255,.24); box-shadow:0 8px 20px -8px rgba(0,0,0,.85)">
+            <div><div style="font-size:14px; color:#FFFFFF">Andrea Violante</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">Co-Founder &amp; CEO at NiEW</div></div>
           </div>
         </div>
-        <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(8,18,32,.72)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
+        <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
           <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:44px; line-height:.6; color:rgba(233,191,163,.5)">“</div>
           <p style="flex:1; margin:18px 0 24px; font-size:14.5px; line-height:1.68; color:#E4E9F2">Working with Isaac was a masterclass in design systems. He didn't just build components; he established a scalable visual language that empowered our entire engineering team to move twice as fast.</p>
           <div style="margin-top:auto; display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14)">
-            <span style="flex:none; width:38px; height:38px; border-radius:50%; background:linear-gradient(140deg,rgba(255,255,255,.16),rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; font-size:12.5px; color:#CFD6E4">DC</span>
-            <div><div style="font-size:14px; color:#FFFFFF">David Chen</div><div style="font-size:12px; color:#E9BFA3">Creative Director, PixelCraft</div></div>
+            <img src="assets/people/tere-endorse.png" alt="Teresa Alaniz" data-endav="1" style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; object-position:center 20%; border:1px solid rgba(255,255,255,.24); box-shadow:0 8px 20px -8px rgba(0,0,0,.85)">
+            <div><div style="font-size:14px; color:#FFFFFF">Teresa Alaniz</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">Design Director</div></div>
           </div>
         </div>
       </div>
@@ -742,15 +761,16 @@
           <p style="margin:0; font-size:clamp(15px,1.35vw,17px); line-height:1.68; color:#E4E9F2">Human Machine Interface redesign for a global industry leader across the packaging, converting, and automotive sector — the aim was to optimize operator ergonomics and streamline complex machine workflows.</p>
         </div>
         <div data-teamcol="1" style="padding-left:clamp(22px,3.2vw,50px); border-left:1px solid rgba(255,255,255,.14)" data-desk-pad="clamp(22px,3.2vw,50px)">
-          <div data-teamrow="1" style="display:flex; align-items:center; gap:clamp(12px,1.6vw,22px); flex-wrap:nowrap; margin-bottom:18px">
-            <span style="flex:none; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">THE TEAM</span>
-            <div style="flex:none; display:flex; align-items:center">
-              <img src="assets/people/angela.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
-              <img src="assets/people/marco.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
-              <img src="assets/people/tere.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+          <div data-teamrow="1" style="display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.2vw,16px); flex-wrap:nowrap; margin-bottom:18px; min-height:38px">
+            <span style="flex:none; align-self:flex-start; white-space:nowrap; line-height:38px; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">THE TEAM</span>
+            <div data-teamgrp="1" style="flex:1 1 auto; min-width:0; display:flex; align-items:center; justify-content:flex-end; gap:12px"><div data-teamav="1" style="flex:none; display:flex; align-items:center">
+              <img src="./tere-mtjpgtzv-tphv.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+              <img src="./isaac-2-mtjpgzae-ohe6.jpg" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+              <img src="./ginevra-mtjphy05-8jha.jpeg" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
               <span style="flex:none; width:38px; height:38px; border-radius:50%; margin-left:-12px; background:rgba(233,191,163,.24); border:2px solid #050D18; display:flex; align-items:center; justify-content:center; font-size:11px; color:#E9BFA3">+2</span>
             </div>
-            <span style="flex:1; min-width:0; font-size:13px; line-height:1.45; color:#B7C0D2">1 Design Director, 1 Design Manager, 3 Designers</span>
+            <span style="flex:none; font-size:13px; line-height:1.45; text-align:left; color:#B7C0D2">1 Design Director, 1 Design Manager, 3 Designers</span>
+            </div>
           </div>
           <p style="margin:0; font-size:clamp(15px,1.35vw,17px); line-height:1.68; color:#E4E9F2"><span style="color:#FFFFFF; font-weight:500">My role:</span> Senior UX/UI Designer — Played a role across key project activities, conducting user research interviews, designing core features including the homepage, production monitoring and troubleshooting process.</p>
         </div>
@@ -767,13 +787,13 @@
         </figure>
         <figure data-figcell="1" style="grid-column:span 4; margin:0; display:flex; flex-direction:column" data-desk-span="span 4">
           <div data-figbox="1" style="aspect-ratio:16 / 9; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.16); background:#050D18; box-shadow:0 30px 70px -30px rgba(0,0,0,.92)" data-desk-aspect="16 / 9">
-            <img src="assets/ims/alarms.svg" alt="Alarms and troubleshooting screen" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform 1s cubic-bezier(.2,.9,.2,1)" style-hover="transform:scale(1.03)">
+            <img src="./f-01-01---active-alarms-mtjq9sdq-wrmq.jpg" alt="Alarms and troubleshooting screen" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform 1s cubic-bezier(.2,.9,.2,1)" style-hover="transform:scale(1.03)">
           </div>
           <figcaption style="margin-top:12px; text-align:center; font-style:italic; font-size:13px; color:#A8B0C4">Alarms — Troubleshooting &amp; recovery guidance</figcaption>
         </figure>
         <figure data-figcell="1" style="grid-column:span 4; margin:0; display:flex; flex-direction:column" data-desk-span="span 4">
           <div data-figbox="1" style="aspect-ratio:16 / 9; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.16); background:#050D18; box-shadow:0 30px 70px -30px rgba(0,0,0,.92)" data-desk-aspect="16 / 9">
-            <img src="assets/ims/watchlist.svg" alt="Watchlist of monitored production parameters" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform 1s cubic-bezier(.2,.9,.2,1)" style-hover="transform:scale(1.03)">
+            <img src="./c-01-01---dashboard-and-widget-configure-mtjq9n9p-zo9o.jpg" alt="Watchlist of monitored production parameters" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform 1s cubic-bezier(.2,.9,.2,1)" style-hover="transform:scale(1.03)">
           </div>
           <figcaption style="margin-top:12px; text-align:center; font-style:italic; font-size:13px; color:#A8B0C4">Watchlist — Monitored production parameters</figcaption>
         </figure>
@@ -782,8 +802,8 @@
 
     <section style="position:relative; padding:clamp(44px,7vh,86px) clamp(20px,5vw,64px) 0; max-width:1320px; margin:0 auto" data-om-label="Design process">
       <h2 style="margin:0 0 clamp(26px,4vh,44px); font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(28px,3.4vw,44px); letter-spacing:-.02em; color:#D5DAE6; text-shadow:0 2px 16px rgba(3,9,18,.75)">Design process</h2>
-      <div data-procrow="1" data-proccount="5" style="display:grid; grid-template-columns:repeat(5,minmax(248px,1fr)); gap:clamp(16px,2.4vw,30px); overflow-x:auto; overflow-y:hidden; padding-bottom:14px; scroll-snap-type:x proximity" data-desk-cols="repeat(5,minmax(248px,1fr))">
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+      <div data-procrow="1" data-proccount="5" data-procfade="1" style="display:grid; mask-image:linear-gradient(90deg,transparent 0,#000 26px,#000 calc(100% - 26px),transparent 100%); -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26px,#000 calc(100% - 26px),transparent 100%); grid-template-columns:repeat(5,minmax(260px,1fr)); gap:clamp(16px,2.4vw,30px); overflow-x:auto; overflow-y:hidden; padding-bottom:14px; scroll-snap-type:x proximity" data-desk-cols="repeat(5,minmax(260px,1fr))">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">01</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">DISCOVER</span>
@@ -809,7 +829,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">02</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">CO-DESIGN</span>
@@ -827,7 +847,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">03</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">UI DESIGN</span>
@@ -845,7 +865,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">04</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">PROTOTYPE &amp; TEST</span>
@@ -867,7 +887,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">05</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">HANDOFF</span>
@@ -893,7 +913,7 @@
     </section>
 
     <section style="position:relative; padding:clamp(44px,7vh,86px) clamp(20px,5vw,64px) clamp(30px,5vh,60px); max-width:1320px; margin:0 auto">
-      <div style="padding:clamp(26px,3.2vw,46px); border-radius:32px; border:1px solid rgba(233,191,163,.2); background:linear-gradient(150deg, rgba(233,191,163,.12), rgba(70,150,195,.12) 46%, rgba(8,18,32,.74)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
+      <div style="padding:clamp(26px,3.2vw,46px); border-radius:32px; border:1px solid rgba(233,191,163,.2); background:linear-gradient(150deg, rgba(233,191,163,.12), rgba(70,150,195,.12) 46%, rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
         <div style="font-size:10.5px; letter-spacing:.2em; color:#E9BFA3; margin-bottom:24px">OUTCOME &amp; IMPACT</div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:26px">
           <div><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(38px,4.4vw,58px); line-height:1; color:#FFFFFF">−35%</div><div style="margin:8px 0 6px; font-size:11px; letter-spacing:.14em; color:#E9BFA3">OPERATOR ERRORS</div><p style="margin:0; font-size:13px; line-height:1.6; color:#939CB2">Simplified machine workflows cut setup mistakes on the shop floor.</p></div>
@@ -924,15 +944,16 @@
           <p style="margin:0; font-size:clamp(15px,1.35vw,17px); line-height:1.68; color:#E4E9F2">A self-shopping mobile application built to serve 10+ million users across major supermarket chains, streamlining the in-store experience by enabling customers to create a personal shoplist, track their cart in real time, and check out seamlessly.</p>
         </div>
         <div data-teamcol="1" style="padding-left:clamp(22px,3.2vw,50px); border-left:1px solid rgba(255,255,255,.14)" data-desk-pad="clamp(22px,3.2vw,50px)">
-          <div data-teamrow="1" style="display:flex; align-items:center; gap:clamp(12px,1.6vw,22px); flex-wrap:nowrap; margin-bottom:18px">
-            <span style="flex:none; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">THE TEAM</span>
-            <div style="flex:none; display:flex; align-items:center">
-              <img src="assets/people/angela.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
-              <img src="assets/people/marco.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
-              <img src="assets/people/tere.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+          <div data-teamrow="1" style="display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.2vw,16px); flex-wrap:nowrap; margin-bottom:18px; min-height:38px">
+            <span style="flex:none; align-self:flex-start; white-space:nowrap; line-height:38px; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">THE TEAM</span>
+            <div data-teamgrp="1" style="flex:1 1 auto; min-width:0; display:flex; align-items:center; justify-content:flex-end; gap:12px"><div data-teamav="1" style="flex:none; display:flex; align-items:center">
+              <img src="./tere-mtjpg2ad-qnc0.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+              <img src="./isaac-2-mtjpganr-1hmg.jpg" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+              <img src="./angela-mtjpggl6-3y5j.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
               <span style="flex:none; width:38px; height:38px; border-radius:50%; margin-left:-12px; background:rgba(233,191,163,.24); border:2px solid #050D18; display:flex; align-items:center; justify-content:center; font-size:11px; color:#E9BFA3">+2</span>
             </div>
-            <span style="flex:1; min-width:0; font-size:13px; line-height:1.45; color:#B7C0D2">1 Design Director, 1 Design Lead, 3 Designers</span>
+            <span style="flex:none; font-size:13px; line-height:1.45; text-align:left; color:#B7C0D2">1 Design Director, 1 Design Lead, 3 Designers</span>
+            </div>
           </div>
           <p style="margin:0; font-size:clamp(15px,1.35vw,17px); line-height:1.68; color:#E4E9F2"><span style="color:#FFFFFF; font-weight:500">My role:</span> Design Lead — Guided the end-to-end process, leading UX strategy, prototyping key micro-interactions, and designing core features including the product detail page and checkout flow.</p>
         </div>
@@ -940,12 +961,12 @@
     </section>
 
     <section style="position:relative; padding:clamp(44px,7vh,86px) clamp(20px,5vw,64px) 0; max-width:1320px; margin:0 auto" data-om-label="Images Grid">
-      <div data-imggrid="1" data-dlgrid="1" data-desk-cols="1.55fr 1fr 1fr 1fr 1fr" style="display:grid; grid-template-columns:1.55fr 1fr 1fr 1fr 1fr; gap:clamp(12px,1.6vw,20px); max-width:1080px; margin:0 auto">
+      <div data-imggrid="1" data-dlgrid="1" data-desk-cols="1.55fr 1fr 1fr 1fr 1fr" style="display:grid; grid-template-columns:1.55fr 1fr 1fr 1fr 1fr; gap:clamp(12px,1.6vw,20px); max-width:1134px; margin:0 auto">
         <figure data-figcell="1" data-figdevice="1" data-desk-span="auto" style="margin:0; display:flex; flex-direction:column">
-          <div data-figbox="1" data-desk-aspect="744 / 854" style="position:relative; aspect-ratio:744 / 854; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.16); background:#050D18; box-shadow:0 30px 70px -30px rgba(0,0,0,.92)">
+          <div data-figbox="1" data-desk-aspect="744 / 854" style="position:relative; aspect-ratio:744 / 854; overflow:visible; border-radius:16px; border:0; background:transparent; box-shadow:none">
             <div style="position:absolute; inset:0; display:flex">
-              <div data-device="phone" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 8px; background: radial-gradient(120% 100% at 68% 16%, rgba(70,150,195,.34), rgba(5,13,24,.25) 62%); padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px">
-                <div style="position:relative; height:98%; width:auto; max-width:100%; aspect-ratio:604 / 1080; animation:om-dev-in-port 1.5s cubic-bezier(.16,.84,.24,1) .1s both, om-dev-orbit-port 15s ease-in-out 1.6s infinite; filter:drop-shadow(0 26px 40px rgba(0,0,0,.7))">
+              <div data-device="phone" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 8px; background: transparent; padding: 0px">
+                <div style="position:relative; height:100%; width:auto; max-width:100%; aspect-ratio:604 / 1080; animation:om-dev-in-port 1.5s cubic-bezier(.16,.84,.24,1) .1s both; filter:drop-shadow(0 26px 40px rgba(0,0,0,.7))">
                   <div style="position:absolute; inset:0; border-radius:8.4%; padding:1.7%; background:linear-gradient(146deg,#F0F2F6 0%,#A7AEBB 16%,#767D8B 38%,#C8CED8 58%,#616874 82%,#9BA2AF 100%); box-shadow:inset 0 0 0 1px rgba(255,255,255,.62), inset 0 -2px 7px rgba(0,0,0,.5), inset 0 2px 5px rgba(255,255,255,.42)">
                     <div style="position:relative; width:100%; height:100%; border-radius:7.2%; overflow:hidden; background:#04070E; box-shadow:inset 0 0 0 2px #05080F">
                       <video src="assets/dl/app-flow.mp4" poster="assets/dl/app-flow-poster.png" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto" data-autoplay="1" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2"></video>
@@ -993,7 +1014,7 @@
     <section style="position:relative; padding:clamp(44px,7vh,86px) clamp(20px,5vw,64px) 0; max-width:1320px; margin:0 auto" data-om-label="Design process">
       <h2 style="margin:0 0 clamp(26px,4vh,44px); font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(28px,3.4vw,44px); letter-spacing:-.02em; color:#D5DAE6; text-shadow:0 2px 16px rgba(3,9,18,.75)">Design process</h2>
       <div data-procrow="1" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2.4vw,30px)" data-desk-cols="repeat(4,minmax(0,1fr))">
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">01</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">DISCOVERY</span>
@@ -1015,7 +1036,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">02</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">ARCHITECTURE</span>
@@ -1033,7 +1054,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">03</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">UI DESIGN</span>
@@ -1051,7 +1072,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">04</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">PROTOTYPE &amp; TEST</span>
@@ -1073,7 +1094,7 @@
     </section>
 
     <section style="position:relative; padding:clamp(44px,7vh,86px) clamp(20px,5vw,64px) clamp(30px,5vh,60px); max-width:1320px; margin:0 auto">
-      <div style="padding:clamp(26px,3.2vw,46px); border-radius:32px; border:1px solid rgba(233,191,163,.2); background:linear-gradient(150deg, rgba(233,191,163,.12), rgba(70,150,195,.12) 46%, rgba(8,18,32,.74)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
+      <div style="padding:clamp(26px,3.2vw,46px); border-radius:32px; border:1px solid rgba(233,191,163,.2); background:linear-gradient(150deg, rgba(233,191,163,.12), rgba(70,150,195,.12) 46%, rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
         <div style="font-size:10.5px; letter-spacing:.2em; color:#E9BFA3; margin-bottom:24px">OUTCOME &amp; IMPACT</div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:26px">
           <div><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(38px,4.4vw,58px); line-height:1; color:#FFFFFF">10M+</div><div style="margin:8px 0 6px; font-size:11px; letter-spacing:.14em; color:#E9BFA3">USERS SERVED</div><p style="margin:0; font-size:13px; line-height:1.6; color:#939CB2">Deployed across major supermarket chains at national scale.</p></div>
@@ -1104,15 +1125,16 @@
           <p style="margin:0; font-size:clamp(15px,1.35vw,17px); line-height:1.68; color:#E4E9F2">End-to-end redesign and product development management for a modular production software engineered to optimize complex sheet metal fabrication workflows, serving 500k+ active users.</p>
         </div>
         <div data-teamcol="1" style="padding-left:clamp(22px,3.2vw,50px); border-left:1px solid rgba(255,255,255,.14)" data-desk-pad="clamp(22px,3.2vw,50px)">
-          <div data-teamrow="1" style="display:flex; align-items:center; gap:clamp(12px,1.6vw,22px); flex-wrap:nowrap; margin-bottom:18px">
-            <span style="flex:none; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">THE TEAM</span>
-            <div style="flex:none; display:flex; align-items:center">
-              <img src="assets/people/angela.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
-              <img src="assets/people/marco.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
-              <img src="assets/people/tere.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+          <div data-teamrow="1" style="display:flex; align-items:center; justify-content:flex-end; gap:clamp(10px,1.2vw,16px); flex-wrap:nowrap; margin-bottom:18px; min-height:38px">
+            <span style="flex:none; align-self:flex-start; white-space:nowrap; line-height:38px; font-size:10.5px; letter-spacing:.2em; color:#E9BFA3">THE TEAM</span>
+            <div data-teamgrp="1" style="flex:1 1 auto; min-width:0; display:flex; align-items:center; justify-content:flex-end; gap:12px"><div data-teamav="1" style="flex:none; display:flex; align-items:center">
+              <img src="./tere-mtjp5x0y-luob.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)"><img src="./isaac-2-mtjp5ovs-1c94.jpg" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)"><img src="./marco-mtjp651q-346e.png" alt="Team member" style="width:38px; height:38px; border-radius:50%; object-fit:cover; margin-left:-12px; border:2px solid #050D18; box-shadow:0 6px 16px -6px rgba(0,0,0,.9)">
+              
+              
               <span style="flex:none; width:38px; height:38px; border-radius:50%; margin-left:-12px; background:rgba(233,191,163,.24); border:2px solid #050D18; display:flex; align-items:center; justify-content:center; font-size:11px; color:#E9BFA3">+2</span>
             </div>
-            <span style="flex:1; min-width:0; font-size:13px; line-height:1.45; color:#B7C0D2">1 Design Director, 1 Design Manager, 3 Designers</span>
+            <span style="flex:none; font-size:13px; line-height:1.45; text-align:left; color:#B7C0D2">1 Design Director, 1 Design Manager, 3 Designers</span>
+            </div>
           </div>
           <p style="margin:0; font-size:clamp(15px,1.35vw,17px); line-height:1.68; color:#E4E9F2"><span style="color: rgb(255, 255, 255); font-weight: 500;">My role:</span> Product Designer &amp; Design Manager - Owned the product design end to end, designing core features like planning section and production management, to QA audit, and development management coordinating several stakeholders from engineering, business and marketing.</p>
         </div>
@@ -1144,8 +1166,8 @@
 
     <section style="position:relative; padding:clamp(44px,7vh,86px) clamp(20px,5vw,64px) 0; max-width:1320px; margin:0 auto" data-om-label="Design process">
       <h2 style="margin:0 0 clamp(26px,4vh,44px); font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(28px,3.4vw,44px); letter-spacing:-.02em; color:#D5DAE6; text-shadow:0 2px 16px rgba(3,9,18,.75)">Design process</h2>
-      <div data-procrow="1" data-proccount="6" style="display:grid; grid-template-columns:repeat(6,minmax(248px,1fr)); gap:clamp(16px,2.4vw,30px); overflow-x:auto; overflow-y:hidden; padding-bottom:14px; scroll-snap-type:x proximity" data-desk-cols="repeat(6,minmax(248px,1fr))">
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+      <div data-procrow="1" data-proccount="6" data-procfade="1" style="display:grid; mask-image:linear-gradient(90deg,transparent 0,#000 26px,#000 calc(100% - 26px),transparent 100%); -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26px,#000 calc(100% - 26px),transparent 100%); grid-template-columns:repeat(6,minmax(260px,1fr)); gap:clamp(16px,2.4vw,30px); overflow-x:auto; overflow-y:hidden; padding-bottom:14px; scroll-snap-type:x proximity" data-desk-cols="repeat(6,minmax(260px,1fr))">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">01</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">DESIGN SYSTEM</span>
@@ -1163,7 +1185,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">02</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">PRODUCT DESIGN</span>
@@ -1185,7 +1207,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">03</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">AUDIT</span>
@@ -1203,7 +1225,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">04</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">ARCHITECTURE</span>
@@ -1221,7 +1243,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">05</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">DELIVERY QA</span>
@@ -1239,7 +1261,7 @@
             </div>
           </div>
         </div>
-        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(8,18,32,.74)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
+        <div data-proccol="1" style="position:relative; display:flex; flex-direction:column; padding:clamp(20px,2.2vw,28px); border-radius:24px; border:1px solid rgba(255,255,255,.15); background:linear-gradient(150deg, rgba(255,255,255,.115), rgba(255,255,255,.035) 44%, rgba(5,12,22,.95)); backdrop-filter:blur(24px) saturate(155%); -webkit-backdrop-filter:blur(24px) saturate(155%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -30px rgba(0,0,0,.92); transition:border-color .45s, transform .45s" style-hover="border-color:rgba(233,191,163,.5)">
           <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:14px; min-height:38px">
             <span style="font-size:clamp(26px,2.6vw,36px); font-weight:200; line-height:1; color:rgba(233,191,163,.6)">06</span>
             <span style="font-size:10px; letter-spacing:.18em; color:#98A3BC">GOVERNANCE</span>
@@ -1261,12 +1283,12 @@
     </section>
 
     <section style="position:relative; padding:clamp(44px,7vh,86px) clamp(20px,5vw,64px) clamp(30px,5vh,60px); max-width:1320px; margin:0 auto">
-      <div style="padding:clamp(26px,3.2vw,46px); border-radius:32px; border:1px solid rgba(233,191,163,.2); background:linear-gradient(150deg, rgba(233,191,163,.12), rgba(70,150,195,.12) 46%, rgba(8,18,32,.74)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
+      <div style="padding:clamp(26px,3.2vw,46px); border-radius:32px; border:1px solid rgba(233,191,163,.2); background:linear-gradient(150deg, rgba(233,191,163,.12), rgba(70,150,195,.12) 46%, rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(165%); -webkit-backdrop-filter:blur(28px) saturate(165%); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 34px 90px -30px rgba(0,0,0,.9)">
         <div style="font-size:10.5px; letter-spacing:.2em; color:#E9BFA3; margin-bottom:24px">OUTCOME &amp; IMPACT</div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:26px">
           <div><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(38px,4.4vw,58px); line-height:1; color:#FFFFFF">30+</div><div style="margin:8px 0 6px; font-size:11px; letter-spacing:.14em; color:#E9BFA3">KEY FEATURES RELEASED</div><p style="margin:0; font-size:13px; line-height:1.6; color:#939CB2">Custom features designed and successfully released to development.</p></div>
           <div><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(38px,4.4vw,58px); line-height:1; color:#FFFFFF">+20%</div><div style="margin:8px 0 6px; font-size:11px; letter-spacing:.14em; color:#E9BFA3">DEVELOPMENT VELOCITY</div><p style="margin:0; font-size:13px; line-height:1.6; color:#939CB2">Accelerated feature delivery through design system standardization and assisted DevOps monitoring.</p></div>
-          <div><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(38px,4.4vw,58px); line-height:1; color:#FFFFFF">1M+</div><div style="margin:8px 0 6px; font-size:11px; letter-spacing:.14em; color:#E9BFA3">ACTIVE USERS</div><p style="margin:0; font-size:13px; line-height:1.6; color:#939CB2">A modular platform serving global sheet metal fabrication.</p></div>
+          <div><div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(38px,4.4vw,58px); line-height:1; color:#FFFFFF">500k+</div><div style="margin:8px 0 6px; font-size:11px; letter-spacing:.14em; color:#E9BFA3">ACTIVE USERS</div><p style="margin:0; font-size:13px; line-height:1.6; color:#939CB2">A modular platform serving global sheet metal fabrication.</p></div>
         </div>
       </div>
       <div style="margin-top:26px; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap">
@@ -1294,12 +1316,21 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E9BFA3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#E9BFA3&quot;,&quot;#7C5CFF&quot;,&quot;#7CE0A8&quot;,&quot;#F5F1FF&quot;],&quot;section&quot;:&quot;Cosmic background&quot;},&quot;starDensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.3,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cosmic background&quot;},&quot;showAstronaut&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Cosmic background&quot;}}">
 class Component extends DCLogic {
-  state = { view: "home", tab: "career", menu: false };
+  state = { view: "home", tab: "values", menu: false, loading: false };
 
   constructor(p) {
     super(p);
     this.rootRef = React.createRef();
     this.greetRef = React.createRef();
+    this.loadStarRef = React.createRef();
+    this.loadTitleRef = React.createRef();
+    this.loadWrapRef = React.createRef();
+    this.loadEarthRef = React.createRef();
+    this.loadEarthWrapRef = React.createRef();
+    this.loadTextRef = React.createRef();
+    this.loadPctRef = React.createRef();
+    this.loadBarRef = React.createRef();
+    this.loadFlashRef = React.createRef();
     this.starRef = React.createRef();
     this.p1Ref = React.createRef();
     this.p2Ref = React.createRef();
@@ -1343,15 +1374,33 @@ class Component extends DCLogic {
 
     this.watchViewport();
     this.startGreeting();
+    this.armAmbient();
     setTimeout(() => this.revealAll(), 2600);
   }
 
   componentDidUpdate() {
+    if (this.state.loading && !this.loaderRunning) { this.loaderRunning = true; this.runLoader(); }
     const prevView = this._lastView;
     const prevTab = this._lastTab;
     this._lastView = this.state.view;
     this._lastTab = this.state.tab;
     if (prevView !== undefined && prevView !== this.state.view) {
+      if (this.state.view !== "home" && this.rootRef.current) {
+        const page = this.rootRef.current.querySelector('[data-om-label^="Case study"]');
+        if (page) {
+          /* only pre-hide when a loader hand-off is in flight; direct nav stays instant */
+          if (this.state.loading) {
+            page.style.transition = "none";
+            page.style.opacity = "0";
+            page.style.transform = "scale(1.04)";
+            this.pageRampEl = page;
+          } else {
+            page.style.transition = "none";
+            page.style.opacity = "1";
+            page.style.transform = "none";
+          }
+        }
+      }
       this.jumpTop();
       this.setupObserver();
       this.setupAstroFallback();
@@ -1360,8 +1409,16 @@ class Component extends DCLogic {
     this.applyResponsive();
   }
 
+  /* Project pages get a 4s starfield interstitial; going home is immediate. */
   go(view) {
     this.astroNow = null; this.earthNow = null; this.astroTarget = null; this.earthTarget = null;
+    if (view !== "home") {
+      const names = { ims: "Next-Gen HMI Redesign", dl: "Self-Shopping Mobile App", ops: "Production Software Design & PM" };
+      this.pendingName = names[view] || "";
+      this.pendingView = view;
+      this.setState({ loading: true, menu: false });
+      return;
+    }
     this.setState({ view: view, menu: false });
     this.jumpTop();
   }
@@ -1393,6 +1450,11 @@ class Component extends DCLogic {
     if (this.vpRO) this.vpRO.disconnect();
     if (this.vpTimer) clearInterval(this.vpTimer);
     if (this.greetTimer) clearTimeout(this.greetTimer);
+    if (this.loadTimer) clearTimeout(this.loadTimer);
+    if (this.loadRaf) cancelAnimationFrame(this.loadRaf);
+    if (this.starRaf) cancelAnimationFrame(this.starRaf);
+    if (this.loadSafety) clearTimeout(this.loadSafety);
+    if (this.audioCtx) { try { this.audioCtx.close(); } catch (e) {} }
   }
 
   /* ---------- starfield ---------- */
@@ -1448,6 +1510,197 @@ class Component extends DCLogic {
       this.greetTimer = setTimeout(tick, wait);
     };
     this.greetTimer = setTimeout(tick, 1400);
+  }
+
+  /* One rAF timeline owns the interstitial: fade in, count up, land on Earth,
+     swap the view while the overlay is still opaque, then fade out. */
+  runLoader() {
+    const wrap = this.loadWrapRef.current;
+    if (!wrap) { this.loaderRunning = false; this.setState({ loading: false, view: this.pendingView }); return; }
+    if (this.loadTitleRef.current) this.loadTitleRef.current.textContent = this.pendingName || "Loading";
+    this.runLoadStars();
+
+    const IN = 480, HOLD = 1700, ZOOM = 1150, OUT = 900;
+    const total = IN + HOLD + ZOOM + OUT;
+    const t0 = performance.now();
+    let swapped = false;
+    this.loadFadedIn = false;
+    wrap.style.transition = "none";
+    wrap.style.opacity = "0";
+    wrap.style.filter = "none";
+    this.warpBoost = 1;
+
+    const ease = (k) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
+    const step = () => {
+      if (!this.mounted || !this.loadWrapRef.current) return;
+      const t = performance.now() - t0;
+      /* rAF-driven fade in, so nothing chases a CSS transition */
+      if (t < IN) wrap.style.opacity = (t / IN).toFixed(3);
+      else if (!this.loadFadedIn) { this.loadFadedIn = true; wrap.style.opacity = "1"; }
+      const p = t < IN + HOLD
+        ? Math.min(0.96, (t / (IN + HOLD)) * 0.96)
+        : Math.min(1, 0.96 + 0.04 * ((t - IN - HOLD) / ZOOM));
+      if (this.loadPctRef.current) this.loadPctRef.current.textContent = Math.round(p * 100) + "%";
+      if (this.loadBarRef.current) this.loadBarRef.current.style.transform = "scaleX(" + p.toFixed(4) + ")";
+
+      const zk = t > IN + HOLD ? Math.min(1, (t - IN - HOLD) / ZOOM) : 0;
+      const ok = t > IN + HOLD + ZOOM ? Math.min(1, (t - IN - HOLD - ZOOM) / OUT) : 0;
+      /* the dive continues through the dissolve so the motion never stalls */
+      const dive = Math.pow(zk, 2.6) + ok * 1.35;
+      this.warpBoost = 1 + dive * 11;
+      if (this.loadEarthRef.current) this.loadEarthRef.current.style.transform = "rotate(" + ((t / 1000) * 7).toFixed(2) + "deg)";
+      if (this.loadEarthWrapRef.current) {
+        /* accelerating approach: slow lean-in, then a hard rush past the surface */
+        this.loadEarthWrapRef.current.style.transform = "scale(" + (1 + dive * 26).toFixed(3) + ") translateY(" + (dive * 5).toFixed(2) + "%)";
+        this.loadEarthWrapRef.current.style.opacity = (1 - Math.max(0, (zk - 0.7) / 0.3) * 0.45).toFixed(3);
+      }
+      if (this.loadTextRef.current) this.loadTextRef.current.style.opacity = (1 - Math.min(1, zk * 1.5)).toFixed(3);
+      if (this.loadFlashRef.current) {
+        const bloom = zk < 0.42 ? 0 : Math.pow(Math.min(1, (zk - 0.42) / 0.58), 1.7);
+        this.loadFlashRef.current.style.opacity = (bloom * (1 - ok * ok)).toFixed(3);
+      }
+
+      if (!swapped && t >= IN + HOLD + ZOOM * 0.72) { swapped = true; this.setState({ view: this.pendingView }); }
+      /* kick the page ramp the frame the overlay starts clearing, so they overlap */
+      if (ok > 0 && this.pageRampEl) {
+        const el = this.pageRampEl;
+        this.pageRampEl = null;
+        el.style.transition = "opacity " + OUT + "ms cubic-bezier(.22,.9,.24,1), transform " + (OUT + 300) + "ms cubic-bezier(.22,.9,.24,1)";
+        el.style.opacity = "1";
+        el.style.transform = "none";
+      }
+      if (ok > 0) {
+        wrap.style.opacity = (1 - ok * ok * (3 - 2 * ok)).toFixed(3);
+        wrap.style.filter = "blur(" + (ok * 10).toFixed(2) + "px)";
+      }
+      if (t >= total) {
+        if (this.loadRaf) cancelAnimationFrame(this.loadRaf);
+        if (this.starRaf) cancelAnimationFrame(this.starRaf);
+        this.loadRaf = null; this.starRaf = null;
+        if (this.loadSafety) clearTimeout(this.loadSafety);
+        this.loaderRunning = false;
+        if (this.pageRampEl) { this.pageRampEl.style.transition = "none"; this.pageRampEl.style.opacity = "1"; this.pageRampEl.style.transform = "none"; this.pageRampEl = null; }
+        this.setState({ loading: false, view: this.pendingView });
+        return;
+      }
+      this.loadRaf = requestAnimationFrame(step);
+    };
+    if (this.loadRaf) cancelAnimationFrame(this.loadRaf);
+    this.loadRaf = requestAnimationFrame(step);
+    if (this.loadSafety) clearTimeout(this.loadSafety);
+    this.loadSafety = setTimeout(() => {
+      if (!this.mounted || !this.state.loading) return;
+      if (this.pageRampEl) { this.pageRampEl.style.transition = "none"; this.pageRampEl.style.opacity = "1"; this.pageRampEl.style.transform = "none"; this.pageRampEl = null; }
+      this.loaderRunning = false;
+      this.setState({ loading: false, view: this.pendingView });
+    }, total + 600);
+  }
+
+  /* Warp-streak starfield for the interstitial. */
+  runLoadStars() {
+    const c = this.loadStarRef.current;
+    if (!c) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr;
+    const ctx = c.getContext("2d");
+    const n = Math.round((c.clientWidth * c.clientHeight) / 11000);
+    const pts = [];
+    for (let i = 0; i < n; i++) pts.push({ a: Math.random() * 6.2832, r: Math.random(), s: Math.random() * 0.4 + 0.14, w: Math.random() * 0.7 + 0.28, al: Math.random() * 0.45 + 0.32 });
+    const cx = c.width / 2, cy = c.height / 2, max = Math.hypot(cx, cy);
+    const draw = () => {
+      if (!this.mounted || !this.loadStarRef.current) return;
+      ctx.clearRect(0, 0, c.width, c.height);
+      for (const p of pts) {
+        p.r += p.s * 0.006 * (this.warpBoost || 1);
+        if (p.r > 1) { p.r = 0.02; p.a = Math.random() * 6.2832; }
+        const d = p.r * max, x = cx + Math.cos(p.a) * d, y = cy + Math.sin(p.a) * d;
+        const tail = (3 + p.r * 12) * (this.warpBoost || 1);
+        const g = ctx.createLinearGradient(x, y, cx + Math.cos(p.a) * (d - tail), cy + Math.sin(p.a) * (d - tail));
+        g.addColorStop(0, "rgba(255,255,255," + (p.al * (0.35 + p.r * 0.65)) + ")");
+        g.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.strokeStyle = g; ctx.lineWidth = p.w * dpr;
+        ctx.beginPath(); ctx.moveTo(x, y);
+        ctx.lineTo(cx + Math.cos(p.a) * (d - tail), cy + Math.sin(p.a) * (d - tail));
+        ctx.stroke();
+      }
+      this.starRaf = requestAnimationFrame(draw);
+    };
+    if (this.starRaf) cancelAnimationFrame(this.starRaf);
+    draw();
+  }
+
+  /* Soft 14s ambient pad. Browsers need a gesture, so it arms on first input. */
+  armAmbient() {
+    if (this.props.ambientAudio === false) return;
+    const start = () => {
+      window.removeEventListener("pointerdown", start);
+      window.removeEventListener("keydown", start);
+      window.removeEventListener("wheel", start);
+      if (this.audioStarted) return;
+      this.audioStarted = true;
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        const ctx = new AC();
+        this.audioCtx = ctx;
+        const now = ctx.currentTime, dur = 15;
+
+        const bus = ctx.createGain();
+        bus.gain.setValueAtTime(0.0001, now);
+        bus.gain.exponentialRampToValueAtTime(0.09, now + 4);
+        bus.gain.setValueAtTime(0.09, now + dur - 5);
+        bus.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+        /* soft cabin filter + slow shimmer */
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass"; lp.frequency.value = 1500; lp.Q.value = 0.4;
+        const shimmer = ctx.createOscillator(), shimmerG = ctx.createGain();
+        shimmer.frequency.value = 0.05; shimmerG.gain.value = 240;
+        shimmer.connect(shimmerG); shimmerG.connect(lp.frequency);
+        shimmer.start(now); shimmer.stop(now + dur);
+
+        /* wide stereo reverb-ish delay so it feels roomy, not synthetic */
+        const wet = ctx.createGain(); wet.gain.value = 0.34;
+        const dl = ctx.createDelay(1.2); dl.delayTime.value = 0.52;
+        const fb = ctx.createGain(); fb.gain.value = 0.42;
+        const dlLp = ctx.createBiquadFilter(); dlLp.type = "lowpass"; dlLp.frequency.value = 1100;
+        dl.connect(dlLp); dlLp.connect(fb); fb.connect(dl); dlLp.connect(wet);
+        lp.connect(dl); lp.connect(bus); wet.connect(bus);
+        bus.connect(ctx.destination);
+
+        /* Amaj9 pad — warm sines only */
+        [110, 164.81, 207.65, 277.18].forEach((hz, i) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = "sine";
+          o.frequency.value = hz;
+          const det = ctx.createOscillator(), detG = ctx.createGain();
+          det.frequency.value = 0.05 + i * 0.02; detG.gain.value = 2.5 + i;
+          det.connect(detG); detG.connect(o.detune); det.start(now); det.stop(now + dur);
+          g.gain.setValueAtTime(0, now);
+          g.gain.linearRampToValueAtTime(0.3 - i * 0.05, now + 4.5 + i * 0.8);
+          g.gain.linearRampToValueAtTime(0, now + dur);
+          o.connect(g); g.connect(lp);
+          o.start(now); o.stop(now + dur);
+        });
+
+        /* sparse bell motif, decays naturally */
+        [[440, 2.4], [554.37, 5.1], [659.25, 7.6], [830.61, 10.4], [554.37, 12.6]].forEach(([hz, at]) => {
+          const t = now + at;
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = "sine"; o.frequency.value = hz;
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(0.14, t + 0.12);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + 3.4);
+          o.connect(g); g.connect(lp);
+          o.start(t); o.stop(t + 3.5);
+        });
+
+        setTimeout(() => { try { ctx.close(); } catch (e) {} this.audioCtx = null; }, (dur + 0.5) * 1000);
+      } catch (e) {}
+    };
+    window.addEventListener("pointerdown", start, { once: true });
+    window.addEventListener("keydown", start, { once: true });
+    window.addEventListener("wheel", start, { once: true, passive: true });
   }
 
   watchViewport() {
@@ -1569,7 +1822,8 @@ class Component extends DCLogic {
       n.x = lerp(n.x, t.x, 0.055);
       n.y = lerp(n.y, t.y, 0.09);
       n.sc = lerp(n.sc, t.sc, 0.055);
-      this.p2Ref.current.style.transform = "translate(" + n.x.toFixed(1) + "px," + n.y.toFixed(1) + "px) scale(" + n.sc.toFixed(4) + ")";
+      const spin = ((performance.now() / 1000) * 0.42) % 360;
+      this.p2Ref.current.style.transform = "translate(" + n.x.toFixed(1) + "px," + n.y.toFixed(1) + "px) scale(" + n.sc.toFixed(4) + ") rotate(" + spin.toFixed(2) + "deg)";
     }
   }
 
@@ -1669,6 +1923,7 @@ class Component extends DCLogic {
      hosts (it delivers spurious "left the viewport" callbacks that pause the
      video), so visibility is measured directly. */
   playVisibleVideos() {
+    if (this.rootRef.current) this.rootRef.current.querySelectorAll("video").forEach(v => { v.muted = true; v.volume = 0; });
     const root = this.rootRef.current;
     if (!root) return;
     const vh = window.innerHeight || 800;
@@ -1686,7 +1941,7 @@ class Component extends DCLogic {
 
   stackScale() {
     const wrap = this.rootRef.current ? this.rootRef.current.querySelector("[data-stackwrap]") : null;
-    if (!wrap || window.innerWidth < 900) return;
+    if (!wrap) return;
     const cards = Array.from(wrap.querySelectorAll("[data-stack]"));
     const vh = window.innerHeight;
     cards.forEach((card, i) => {
@@ -1816,7 +2071,13 @@ class Component extends DCLogic {
       c.style.paddingRight = nar ? "0px" : deskPad;
       c.style.paddingBottom = nar ? "22px" : "0px";
     });
-    root.querySelectorAll("[data-teamrow]").forEach(r => { r.style.flexWrap = nar ? "wrap" : "nowrap"; });
+    root.querySelectorAll("[data-teamrow]").forEach(r => {
+      r.style.flexWrap = nar ? "wrap" : "nowrap";
+      r.style.justifyContent = nar ? "flex-start" : "flex-end";
+      r.querySelectorAll(":scope > span").forEach(s => { s.style.textAlign = nar ? "left" : "right"; });
+      r.querySelectorAll("[data-teamav]").forEach(g => { g.style.marginLeft = nar ? "0px" : "auto"; });
+    });
+    root.querySelectorAll("[data-endav]").forEach(a => { a.style.width = a.style.height = nar ? "40px" : "44px"; });
     root.querySelectorAll("[data-teamcol]").forEach(c => {
       const deskPad = pad(c, "paddingLeft");
       c.style.borderLeft = nar ? "none" : "1px solid rgba(255,255,255,.14)";
@@ -1825,6 +2086,26 @@ class Component extends DCLogic {
       c.style.borderTop = nar ? "1px solid rgba(255,255,255,.14)" : "none";
     });
     root.querySelectorAll("[data-orbits]").forEach(o => { o.style.display = nar ? "none" : "block"; });
+    /* every multi-card row becomes a touch rail instead of a squeezed column */
+    root.querySelectorAll("[data-procrow],[data-svcgrid]").forEach(g => {
+      if (!nar) { g.style.overflowX = g.dataset.proccount ? "auto" : "visible"; g.style.scrollSnapType = g.dataset.proccount ? "x proximity" : "none"; return; }
+      const count = g.querySelectorAll(":scope > [data-proccol],:scope > [data-svccard]").length;
+      if (count < 2) return;
+      g.style.gridTemplateColumns = "repeat(" + count + ",minmax(80vw,1fr))";
+      g.style.overflowX = "auto";
+      g.style.scrollSnapType = "x mandatory";
+      g.querySelectorAll(":scope > *").forEach(c => { c.style.scrollSnapAlign = "center"; c.style.gridColumn = "auto"; });
+    });
+    root.querySelectorAll("section").forEach(s => {
+      if (s.dataset.deskPadding === undefined) s.dataset.deskPadding = s.style.padding || "";
+      s.style.padding = nar ? "clamp(52px,9vh,86px) 18px" : s.dataset.deskPadding;
+    });
+    if (this.p2Ref.current) {
+      this.p2Ref.current.style.width = nar ? "104vw" : "69vw";
+      this.p2Ref.current.style.left = nar ? "-30vw" : "-21vw";
+      this.p2Ref.current.style.bottom = nar ? "-64vh" : "-82vh";
+    }
+    if (this.p1Ref.current) this.p1Ref.current.style.width = nar ? "78px" : "132px";
     root.querySelectorAll("[data-imggrid]").forEach(g => {
       g.style.gridTemplateColumns = nar ? "minmax(0,1fr)" : (cols(g) || "repeat(12,1fr)");
       g.querySelectorAll("figure").forEach(fig => {
@@ -1849,9 +2130,9 @@ class Component extends DCLogic {
         }
       });
     });
-    root.querySelectorAll("[data-stack]").forEach(c => {
-      c.style.position = nar ? "relative" : "sticky";
-      if (nar) { c.style.transform = "none"; c.style.filter = "none"; }
+    root.querySelectorAll("[data-stack]").forEach((c, i) => {
+      c.style.position = "sticky";
+      if (nar) c.style.top = (74 + i * 14) + "px";
     });
   }
 
@@ -1868,6 +2149,9 @@ class Component extends DCLogic {
       navRef: this.navRef, progressRef: this.progressRef, toastRef: this.toastRef,
       careerRef: this.careerRef, careerLineRef: this.careerLineRef,
       isHome: v === "home", isIms: v === "ims", isDl: v === "dl", isOps: v === "ops",
+      isLoading: this.state.loading, loadStarRef: this.loadStarRef, loadTitleRef: this.loadTitleRef,
+      loadWrapRef: this.loadWrapRef, loadEarthRef: this.loadEarthRef, loadEarthWrapRef: this.loadEarthWrapRef,
+      loadTextRef: this.loadTextRef, loadPctRef: this.loadPctRef, loadBarRef: this.loadBarRef, loadFlashRef: this.loadFlashRef,
       showPlanets: v === "home",
       isProject: v !== "home",
       isCareer: t === "career", isValues: t === "values",
