@@ -1,45 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Single Page Application: one indexable URL, sections reached via hash anchors -->
   <url>
     <loc>https://isaacbianchi.com/</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://isaacbianchi.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://isaacbianchi.com/"/>
+
+    <image:image>
+      <image:loc>https://isaacbianchi.com/assets/images/og-cover.png</image:loc>
+      <image:title>Isaac Bianchi — Product Design Leader</image:title>
+      <image:caption>Portfolio cover: Isaac Bianchi, Product Design Leader, designing AI-first products.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://isaacbianchi.com/assets/people/isaac.png</image:loc>
+      <image:title>Isaac Bianchi</image:title>
+      <image:caption>Isaac Bianchi, UX/UI and Product Design Leader based in Italy.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://isaacbianchi.com/assets/ims/dashboard-3d.jpg</image:loc>
+      <image:title>Next-Gen HMI Redesign — dashboard</image:title>
+      <image:caption>Industrial HMI dashboard with configured widgets and 3D machine layout. Red Dot Best of the Best 2024.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://isaacbianchi.com/assets/dl/detail.jpg</image:loc>
+      <image:title>Self-Shopping Mobile App — article detail</image:title>
+      <image:caption>Enterprise retail self-shopping application serving 10M+ users.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://isaacbianchi.com/assets/ops/tasks.jpg</image:loc>
+      <image:title>Production Software Design &amp; PM — task management</image:title>
+      <image:caption>Modular production management platform serving 1M+ active users.</image:caption>
+    </image:image>
   </url>
-  <url>
-    <loc>https://isaacbianchi.com/#about</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://isaacbianchi.com/#expertise</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://isaacbianchi.com/#works</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://isaacbianchi.com/#ai</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://isaacbianchi.com/#process</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://isaacbianchi.com/#contact</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
 </urlset>

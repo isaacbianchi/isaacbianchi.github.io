@@ -1,10 +1,38 @@
+# robots.txt — Isaac Bianchi | Product Design Leader
+# https://isaacbianchi.com/
+
 User-agent: *
 Allow: /
 
-# Working / source directories — no value for crawlers
+# Working directories that must never be indexed (excluded from the export anyway)
 Disallow: /uploads/
 Disallow: /ref/
 Disallow: /ref2/
 Disallow: /screenshots/
+
+# Let crawlers fetch the assets they need to render and preview the page
+Allow: /assets/
+
+# Major crawlers — no crawl-delay, the site is a single static page
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
 
 Sitemap: https://isaacbianchi.com/sitemap.xml
