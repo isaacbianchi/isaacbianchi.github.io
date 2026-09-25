@@ -142,8 +142,8 @@ The only legal contents of the document `<style>` block are: body/`html` resets,
 Do not create CSS classes, do not build a utility layer, do not extract a stylesheet.
 (This is deliberate: the design is edited visually, and inline styles paint immediately.)
 
-**JavaScript model:** one class, one `requestAnimationFrame` loop for the page plus one
-for the loader — each with its **own** cancel handle. Never add a third loop; hook into
+**JavaScript model:** one class, one `requestAnimationFrame` loop for the page plus the
+loader's two (timeline `loadRaf` + star stream `hyStarRaf`) — each with its **own** cancel handle. Never add a third loop; hook into
 the existing `loop(ts)` instead. Never use `setInterval` for animation. Never use
 `scrollIntoView`. No `innerHTML` assembly of UI — write markup in the template.
 
@@ -321,9 +321,10 @@ This bug has been introduced and fixed several times. Do not reintroduce it.
    created before user activation starts *suspended*; voices are scheduled only after
    `resume()` resolves and `state === "running"`, and the listeners re-arm if it does not.
    Keep that gate. Keep every `<video>` muted.
-9. **Never touch the loader's timing contract:** it runs once (first hop into a case study),
-   stays under 4 seconds, mounts the case study at ~80% of the dive while the overlay is
-   still opaque, and has a safety timeout so it can never strand the user.
+9. **Never touch the loader's timing contract:** the hyperspace loader (`runLoaderHyper`) runs
+   once (first hop into a case study), stays under 4 seconds (3.52s), mounts the case study
+   during the light flash while the overlay is still opaque, reveals it by splitting the
+   screen along the progress line, and has a safety timeout so it can never strand the user.
 10. **Never add filler.** No placeholder sections, no dummy stats, no decorative icons,
     no emoji. If content is missing, ask.
 

@@ -177,22 +177,26 @@
     <div ref="{{ progressRef }}" style="height:100%; width:0%; background:linear-gradient(90deg,#4FA3C7,#E9BFA3); box-shadow:0 0 16px rgba(233,191,163,.6); transition:width .1s linear"></div>
   </div>
 
-  <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
-  <div ref="{{ loadWrapRef }}" style="position:fixed; inset:0; z-index:200; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(24px,4vh,42px); background:radial-gradient(120% 90% at 50% 42%, #0B1B2C 0%, #05101C 46%, #03080F 100%); opacity:0; overflow:hidden">
-    <canvas ref="{{ loadStarRef }}" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
-    <div ref="{{ loadEarthWrapRef }}" style="position:relative; width:clamp(150px,22vw,250px); display:flex; align-items:center; justify-content:center; will-change:transform">
-      <div aria-hidden="true" style="position:absolute; inset:-30%; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(90,160,215,.3), rgba(6,14,26,0) 68%); filter:blur(10px)"></div>
-      <img ref="{{ loadEarthRef }}" src="assets/space/earth.png" alt="" aria-hidden="true" style="position:relative; width:100%; height:auto; filter:drop-shadow(0 24px 48px rgba(0,0,0,.75)); will-change:transform">
-    </div>
-    <div ref="{{ loadTextRef }}" style="position:relative; text-align:center">
-      <div style="font-size:10.5px; letter-spacing:.24em; color:#8E9AB0; margin-bottom:14px">LANDING TO PROJECT</div>
-      <div ref="{{ loadTitleRef }}" style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(21px,2.8vw,34px); letter-spacing:-.018em; color:#FFFFFF">Loading</div>
-      <div ref="{{ loadPctRef }}" style="margin-top:12px; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(15px,1.6vw,19px); letter-spacing:.04em; color:#E9BFA3">0%</div>
-      <div style="margin:20px auto 0; width:clamp(180px,26vw,260px); height:2px; border-radius:2px; background:rgba(255,255,255,.12); overflow:hidden">
-        <div ref="{{ loadBarRef }}" style="height:100%; width:100%; transform:scaleX(0); transform-origin:left center; background:linear-gradient(90deg,#4C86AE,#E9BFA3)"></div>
+  <sc-if value="{{ isLoadingHyper }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ hyWrapRef }}" data-om-label="Loader hyperspace" style="position:fixed; inset:0; z-index:200; overflow:hidden; opacity:0">
+    <div ref="{{ hyTopRef }}" style="position:absolute; left:0; right:0; top:0; height:50.2%; background:linear-gradient(180deg,#02060C,#06111D); will-change:transform"></div>
+    <div ref="{{ hyBotRef }}" style="position:absolute; left:0; right:0; bottom:0; height:50.2%; background:linear-gradient(0deg,#02060C,#06111D); will-change:transform"></div>
+    <div ref="{{ hyFadeRef }}" style="position:absolute; inset:0; will-change:opacity">
+      <canvas ref="{{ hyStarRef }}" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
+      <div style="position:absolute; left:0; right:0; top:0; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:clamp(20px,3.4vw,40px) clamp(20px,4.4vw,64px)">
+        <span style="font-size:11px; letter-spacing:.24em; color:#E9EDF4">ISAAC BIANCHI</span>
+        <span style="font-size:11px; letter-spacing:.22em; color:#8E9AB0">LANDING TO PROJECT</span>
+      </div>
+      <div style="position:absolute; left:clamp(20px,4.4vw,64px); right:clamp(20px,4.4vw,64px); bottom:calc(50% + clamp(18px,3vh,30px))">
+        <div ref="{{ hyCatRef }}" style="font-size:10.5px; letter-spacing:.24em; color:#E9BFA3; margin-bottom:14px">CASE STUDY</div>
+        <div ref="{{ hyTitleRef }}" style="max-width:16ch; font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:clamp(34px,6.4vw,92px); line-height:1.02; letter-spacing:-.035em; color:#FFFFFF">Loading</div>
+      </div>
+      <div style="position:absolute; left:clamp(20px,4.4vw,64px); right:clamp(20px,4.4vw,64px); top:calc(50% + clamp(16px,2.6vh,26px)); display:flex; align-items:flex-start; justify-content:space-between; gap:20px">
+        <span style="display:inline-flex; align-items:flex-start; gap:.08em; font-family:'Sora','Space Grotesk',sans-serif; font-weight:200; font-size:clamp(54px,11vw,150px); line-height:.9; letter-spacing:-.04em; color:rgba(255,255,255,.9); font-variant-numeric:tabular-nums"><span ref="{{ hyCountRef }}">0</span><span style="margin-top:.1em; font-size:.36em; letter-spacing:0; color:#E9BFA3">%</span></span>
+        <span style="padding-top:8px; font-size:11px; letter-spacing:.2em; color:#8E9AB0; font-variant-numeric:tabular-nums; white-space:nowrap"><span ref="{{ hyIdxRef }}" style="color:#E9EDF4">01</span> / 03</span>
       </div>
     </div>
-    <div ref="{{ loadFlashRef }}" aria-hidden="true" style="position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0; background:radial-gradient(circle at 50% 50%, rgba(214,236,255,.95) 0%, rgba(150,200,240,.72) 38%, rgba(9,20,34,.35) 100%)"></div>
+    <div ref="{{ hyLineRef }}" aria-hidden="true" style="position:absolute; left:0; right:0; top:50%; height:1px; margin-top:-.5px; transform:scaleX(0); transform-origin:left center; background:linear-gradient(90deg, rgba(233,191,163,.25), #E9BFA3 30%, #FBEADC 60%, #E9BFA3); box-shadow:0 0 12px rgba(233,191,163,.55); will-change:transform, opacity"></div>
   </div>
   </sc-if>
 
@@ -819,10 +823,10 @@
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px">
         <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
           <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:44px; line-height:.6; color:rgba(233,191,163,.5)">“</div>
-          <p style="flex:1; margin:18px 0 24px; font-size:14.5px; line-height:1.68; color:#E4E9F2">Isaac has an incredible eye for micro-interactions. He brought our wearable app to life with subtle, delightful animations that made the entire experience feel premium, organic, and memorable.</p>
+          <p style="flex:1; margin:18px 0 24px; font-size:14.5px; line-height:1.68; color:#E4E9F2">I was particularly impressed by Isaac’s ability to understand broader business goals while remaining highly hands-on, and speed of execution. He consistently demonstrated strong ownership when navigating ambiguity, complex stakeholder environments, and multiple priorities.</p>
           <div style="margin-top:auto; display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14)">
             <img src="assets/people/isabel.png" alt="Isabel Pizzi" data-endav="1" style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; object-position:center 20%; border:1px solid rgba(255,255,255,.24); box-shadow:0 8px 20px -8px rgba(0,0,0,.85)">
-            <div><div style="font-size:14px; color:#FFFFFF">Isabel Pizzi</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">Growth Director at NiEW, Ex Amazon</div></div>
+            <div><div style="font-size:14px; color:#FFFFFF">Isabel Pizzi</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">Growth Director, Ex Amazon</div></div>
           </div>
         </div>
         <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
@@ -830,17 +834,10 @@
           <p style="flex:1; margin:18px 0 24px; font-size:14.5px; line-height:1.68; color:#E4E9F2">Isaac’s ability to turn complex product processes into clear digital strategy transformed key engagements. He is a leader who seamlessly balances executive alignment with proactive, high-rigor execution.</p>
           <div style="margin-top:auto; display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14)">
             <img src="assets/people/andrea.jpg" alt="Andrea Violante" data-endav="1" style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; object-position:center 20%; border:1px solid rgba(255,255,255,.24); box-shadow:0 8px 20px -8px rgba(0,0,0,.85)">
-            <div><div style="font-size:14px; color:#FFFFFF">Andrea Violante</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">Co-Founder &amp; CEO at NiEW</div></div>
+            <div><div style="font-size:14px; color:#FFFFFF">Andrea Violante</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">CEO at NiEW</div></div>
           </div>
         </div>
-        <div data-reveal="up" style="display:flex; flex-direction:column; padding:clamp(24px,2.4vw,34px); border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(150deg, rgba(255,255,255,.12), rgba(5,12,22,.95)); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); box-shadow:0 1px 0 rgba(255,255,255,.26) inset, 0 26px 70px -28px rgba(0,0,0,.9); transition:transform .5s cubic-bezier(.2,.9,.2,1), border-color .5s" style-hover="transform:translateY(-5px); border-color:rgba(233,191,163,.34)">
-          <div style="font-family:'Sora','Space Grotesk',sans-serif; font-weight:300; font-size:44px; line-height:.6; color:rgba(233,191,163,.5)">“</div>
-          <p style="flex:1; margin:18px 0 24px; font-size:14.5px; line-height:1.68; color:#E4E9F2">Isaac is the type of leader who raises the craft while elevating everyone around him. He didn't just advocate for exceptional work; he cultivated an inspiring culture where the team felt genuinely inspired to step up and own the vision.</p>
-          <div style="margin-top:auto; display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14)">
-            <img src="./angela-mu0xwsnw-w5x1.png" alt="Teresa Alaniz" data-endav="1" style="flex:none; width:44px; height:44px; border-radius:50%; object-fit:cover; object-position:center 20%; border:1px solid rgba(255,255,255,.24); box-shadow:0 8px 20px -8px rgba(0,0,0,.85)">
-            <div><div style="font-size:14px; color:#FFFFFF">Angela Piazza</div><div style="font-size: 12px; color: #E9BFA3; font-weight: 700">UX/UI Design Lead</div></div>
-          </div>
-        </div>
+        
       </div>
     </section>
 
@@ -1506,6 +1503,28 @@ class Component extends DCLogic {
     this.loadPctRef = React.createRef();
     this.loadBarRef = React.createRef();
     this.loadFlashRef = React.createRef();
+    this.proWrapRef = React.createRef();
+    this.proStarRef = React.createRef();
+    this.proContentRef = React.createRef();
+    this.proOrbitRef = React.createRef();
+    this.proStageRef = React.createRef();
+    this.proSunRef = React.createRef();
+    this.proPlanetRef = React.createRef();
+    this.proShadeRef = React.createRef();
+    this.hyWrapRef = React.createRef();
+    this.hyStarRef = React.createRef();
+    this.hyFadeRef = React.createRef();
+    this.hyTitleRef = React.createRef();
+    this.hyCountRef = React.createRef();
+    this.hyIdxRef = React.createRef();
+    this.hyCatRef = React.createRef();
+    this.hyLineRef = React.createRef();
+    this.hyTopRef = React.createRef();
+    this.hyBotRef = React.createRef();
+    this.proTitleRef = React.createRef();
+    this.proIdxRef = React.createRef();
+    this.proPctRef = React.createRef();
+    this.proBarRef = React.createRef();
     this.starRef = React.createRef();
     this.p1Ref = React.createRef();
     this.p2Ref = React.createRef();
@@ -1630,6 +1649,8 @@ class Component extends DCLogic {
     if (this.loadTimer) clearTimeout(this.loadTimer);
     if (this.loadRaf) cancelAnimationFrame(this.loadRaf);
     if (this.starRaf) cancelAnimationFrame(this.starRaf);
+    if (this.proStarRaf) cancelAnimationFrame(this.proStarRaf);
+    if (this.hyStarRaf) cancelAnimationFrame(this.hyStarRaf);
     if (this.loadSafety) clearTimeout(this.loadSafety);
     if (this.audioTimer) clearTimeout(this.audioTimer);
     if (this.audioCtx) { try { this.audioCtx.close(); } catch (e) {} }
@@ -1692,71 +1713,81 @@ class Component extends DCLogic {
 
   /* One rAF timeline owns the interstitial: fade in, count up, land on Earth,
      swap the view while the overlay is still opaque, then fade out. */
-  runLoader() {
-    const wrap = this.loadWrapRef.current;
+  /* Loader style is a tweak: "orbit" (minimal, default) or "earth" (landing dive). */
+
+  /* Hyperspace loader — stars stream toward the viewer, the title rises word by word,
+     a full-width line tracks progress, then the screen splits open along it. 3.5s total. */
+  runLoaderHyper() {
+    const wrap = this.hyWrapRef.current;
     if (!wrap) { this.loaderRunning = false; this.setState({ loading: false, view: this.pendingView }); return; }
-    if (this.loadTitleRef.current) this.loadTitleRef.current.textContent = this.pendingName || "Loading";
-    this.runLoadStars();
+    const idx = { ims: "01", dl: "02", ops: "03" };
+    const cat = { ims: "B2B PRODUCT · HMI", dl: "MOBILE RETAIL", ops: "SAAS PRODUCT · PM" };
+    if (this.hyIdxRef.current) this.hyIdxRef.current.textContent = idx[this.pendingView] || "01";
+    if (this.hyCatRef.current) this.hyCatRef.current.textContent = "CASE STUDY " + (idx[this.pendingView] || "01") + " — " + (cat[this.pendingView] || "");
+    const words = [];
+    if (this.hyTitleRef.current) {
+      const el = this.hyTitleRef.current;
+      el.textContent = "";
+      (this.pendingName || "Loading").split(" ").forEach((w, i, arr) => {
+        const mask = document.createElement("span");
+        mask.style.cssText = "display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.08em; margin-bottom:-.08em";
+        const inner = document.createElement("span");
+        inner.textContent = w;
+        inner.style.cssText = "display:inline-block; transform:translateY(108%); will-change:transform";
+        mask.appendChild(inner);
+        el.appendChild(mask);
+        if (i < arr.length - 1) el.appendChild(document.createTextNode(" "));
+        words.push(inner);
+      });
+    }
+    this.hyBoost = 1;
+    this.runHyperStars();
 
-    const IN = 480, HOLD = 1700, ZOOM = 1150, OUT = 900;
-    const total = IN + HOLD + ZOOM + OUT;
+    const IN = 360, HOLD = 2140, FLASH = 260, SPLIT = 760;
+    const T1 = IN + HOLD, total = T1 + FLASH + SPLIT;
     const t0 = performance.now();
-    let swapped = false;
-    this.loadFadedIn = false;
-    wrap.style.transition = "none";
-    wrap.style.opacity = "0";
-    wrap.style.filter = "none";
-    this.warpBoost = 1;
+    let swapped = false, ramped = false;
+    const eo = (k) => 1 - Math.pow(1 - k, 4);
+    const eio = (k) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
 
-    const ease = (k) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
     const step = () => {
-      if (!this.mounted || !this.loadWrapRef.current) return;
+      if (!this.mounted || !this.hyWrapRef.current) return;
       const t = performance.now() - t0;
-      /* rAF-driven fade in, so nothing chases a CSS transition */
-      if (t < IN) wrap.style.opacity = (t / IN).toFixed(3);
-      else if (!this.loadFadedIn) { this.loadFadedIn = true; wrap.style.opacity = "1"; }
-      const p = t < IN + HOLD
-        ? Math.min(0.96, (t / (IN + HOLD)) * 0.96)
-        : Math.min(1, 0.96 + 0.04 * ((t - IN - HOLD) / ZOOM));
-      if (this.loadPctRef.current) this.loadPctRef.current.textContent = Math.round(p * 100) + "%";
-      if (this.loadBarRef.current) this.loadBarRef.current.style.transform = "scaleX(" + p.toFixed(4) + ")";
+      wrap.style.opacity = t < IN ? eo(t / IN).toFixed(3) : "1";
 
-      const zk = t > IN + HOLD ? Math.min(1, (t - IN - HOLD) / ZOOM) : 0;
-      const ok = t > IN + HOLD + ZOOM ? Math.min(1, (t - IN - HOLD - ZOOM) / OUT) : 0;
-      /* the dive continues through the dissolve so the motion never stalls */
-      const dive = Math.pow(zk, 2.6) + ok * 1.35;
-      this.warpBoost = 1 + dive * 11;
-      if (this.loadEarthRef.current) this.loadEarthRef.current.style.transform = "rotate(" + ((t / 1000) * 7).toFixed(2) + "deg)";
-      if (this.loadEarthWrapRef.current) {
-        /* accelerating approach: slow lean-in, then a hard rush past the surface */
-        this.loadEarthWrapRef.current.style.transform = "scale(" + (1 + dive * 26).toFixed(3) + ") translateY(" + (dive * 5).toFixed(2) + "%)";
-        this.loadEarthWrapRef.current.style.opacity = (1 - Math.max(0, (zk - 0.7) / 0.3) * 0.45).toFixed(3);
-      }
-      if (this.loadTextRef.current) this.loadTextRef.current.style.opacity = (1 - Math.min(1, zk * 1.5)).toFixed(3);
-      if (this.loadFlashRef.current) {
-        const bloom = zk < 0.42 ? 0 : Math.pow(Math.min(1, (zk - 0.42) / 0.58), 1.7);
-        this.loadFlashRef.current.style.opacity = (bloom * (1 - ok * ok)).toFixed(3);
-      }
+      words.forEach((w, i) => {
+        const k = Math.max(0, Math.min(1, (t - 240 - i * 90) / 720));
+        w.style.transform = "translateY(" + ((1 - eo(k)) * 108).toFixed(2) + "%)";
+      });
 
-      if (!swapped && t >= IN + HOLD + ZOOM * 0.72) { swapped = true; this.setState({ view: this.pendingView }); }
-      /* kick the page ramp the frame the overlay starts clearing, so they overlap */
-      if (ok > 0 && this.pageRampEl) {
-        const el = this.pageRampEl;
-        this.pageRampEl = null;
-        el.style.transition = "opacity " + OUT + "ms cubic-bezier(.22,.9,.24,1), transform " + (OUT + 300) + "ms cubic-bezier(.22,.9,.24,1)";
-        el.style.opacity = "1";
-        el.style.transform = "none";
+      const p = eio(Math.min(1, t / T1));
+      if (this.hyCountRef.current) this.hyCountRef.current.textContent = String(Math.round(p * 100));
+      if (this.hyLineRef.current) this.hyLineRef.current.style.transform = "scaleX(" + p.toFixed(4) + ")";
+      this.hyBoost = 1 + Math.pow(p, 3) * 3.5;
+
+      const fk = t > T1 ? Math.min(1, (t - T1) / FLASH) : 0;
+      const sk = t > T1 + FLASH ? Math.min(1, (t - T1 - FLASH) / SPLIT) : 0;
+      if (this.hyFadeRef.current) this.hyFadeRef.current.style.opacity = (1 - eio(fk)).toFixed(3);
+      if (this.hyLineRef.current) {
+        this.hyLineRef.current.style.boxShadow = "0 0 " + (12 + fk * 26).toFixed(1) + "px rgba(251,234,220," + (0.55 + fk * 0.4).toFixed(2) + ")";
+        this.hyLineRef.current.style.opacity = (1 - eio(sk)).toFixed(3);
       }
-      if (ok > 0) {
-        wrap.style.opacity = (1 - ok * ok * (3 - 2 * ok)).toFixed(3);
-        wrap.style.filter = "blur(" + (ok * 10).toFixed(2) + "px)";
+      if (!swapped && t >= T1 + FLASH * 0.4) { swapped = true; this.setState({ view: this.pendingView }); }
+      if (sk > 0) {
+        if (!ramped && this.pageRampEl) {
+          ramped = true;
+          const el = this.pageRampEl; this.pageRampEl = null;
+          el.style.transition = "opacity " + SPLIT + "ms cubic-bezier(.22,.9,.24,1), transform " + (SPLIT + 300) + "ms cubic-bezier(.22,.9,.24,1)";
+          el.style.opacity = "1"; el.style.transform = "none";
+        }
+        const e = eio(sk);
+        if (this.hyTopRef.current) this.hyTopRef.current.style.transform = "translateY(" + (-e * 101).toFixed(2) + "%)";
+        if (this.hyBotRef.current) this.hyBotRef.current.style.transform = "translateY(" + (e * 101).toFixed(2) + "%)";
       }
       if (t >= total) {
-        if (this.loadRaf) cancelAnimationFrame(this.loadRaf);
-        if (this.starRaf) cancelAnimationFrame(this.starRaf);
-        this.loadRaf = null; this.starRaf = null;
+        if (this.hyStarRaf) cancelAnimationFrame(this.hyStarRaf);
         if (this.loadSafety) clearTimeout(this.loadSafety);
-        this.loaderRunning = false;
+        this.loadRaf = null; this.hyStarRaf = null; this.loaderRunning = false;
         if (this.pageRampEl) { this.pageRampEl.style.transition = "none"; this.pageRampEl.style.opacity = "1"; this.pageRampEl.style.transform = "none"; this.pageRampEl = null; }
         this.setState({ loading: false, view: this.pendingView });
         return;
@@ -1774,38 +1805,44 @@ class Component extends DCLogic {
     }, total + 600);
   }
 
-  /* Warp-streak starfield for the interstitial. */
-  runLoadStars() {
-    const c = this.loadStarRef.current;
+  /* 3D star stream: points fly toward the camera, streak length follows speed. */
+  runHyperStars() {
+    const c = this.hyStarRef.current;
     if (!c) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr;
     const ctx = c.getContext("2d");
-    const n = Math.round((c.clientWidth * c.clientHeight) / 11000);
+    const n = Math.max(70, Math.round((c.clientWidth * c.clientHeight) / 7000));
     const pts = [];
-    for (let i = 0; i < n; i++) pts.push({ a: Math.random() * 6.2832, r: Math.random(), s: Math.random() * 0.4 + 0.14, w: Math.random() * 0.7 + 0.28, al: Math.random() * 0.45 + 0.32 });
-    const cx = c.width / 2, cy = c.height / 2, max = Math.hypot(cx, cy);
-    const draw = () => {
-      if (!this.mounted || !this.loadStarRef.current) return;
-      ctx.clearRect(0, 0, c.width, c.height);
+    const spawn = (p, far) => { p.x = (Math.random() * 2 - 1); p.y = (Math.random() * 2 - 1); p.z = far ? 1 : Math.random() * 0.9 + 0.1; p.pz = p.z; p.a = Math.random() * 0.5 + 0.35; return p; };
+    for (let i = 0; i < n; i++) pts.push(spawn({}, false));
+    let last = performance.now();
+    const draw = (ts) => {
+      if (!this.mounted || !this.hyStarRef.current) return;
+      const dt = Math.min(0.05, (ts - last) / 1000); last = ts;
+      const W = c.width, H = c.height, cx = W / 2, cy = H / 2, fl = Math.max(W, H) * 0.42;
+      const v = 0.075 * (this.hyBoost || 1);
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineCap = "round";
       for (const p of pts) {
-        p.r += p.s * 0.006 * (this.warpBoost || 1);
-        if (p.r > 1) { p.r = 0.02; p.a = Math.random() * 6.2832; }
-        const d = p.r * max, x = cx + Math.cos(p.a) * d, y = cy + Math.sin(p.a) * d;
-        const tail = (3 + p.r * 12) * (this.warpBoost || 1);
-        const g = ctx.createLinearGradient(x, y, cx + Math.cos(p.a) * (d - tail), cy + Math.sin(p.a) * (d - tail));
-        g.addColorStop(0, "rgba(255,255,255," + (p.al * (0.35 + p.r * 0.65)) + ")");
-        g.addColorStop(1, "rgba(255,255,255,0)");
-        ctx.strokeStyle = g; ctx.lineWidth = p.w * dpr;
-        ctx.beginPath(); ctx.moveTo(x, y);
-        ctx.lineTo(cx + Math.cos(p.a) * (d - tail), cy + Math.sin(p.a) * (d - tail));
-        ctx.stroke();
+        p.pz = p.z; p.z -= v * dt;
+        if (p.z <= 0.03) { spawn(p, true); continue; }
+        const sx = cx + (p.x / p.z) * fl, sy = cy + (p.y / p.z) * fl;
+        const px = cx + (p.x / p.pz) * fl, py = cy + (p.y / p.pz) * fl;
+        if (sx < -20 || sx > W + 20 || sy < -20 || sy > H + 20) { spawn(p, true); continue; }
+        const k = 1 - p.z;
+        ctx.strokeStyle = "rgba(255,255,255," + (p.a * (0.25 + k * 0.75)).toFixed(3) + ")";
+        ctx.lineWidth = (0.5 + k * 1.3) * dpr;
+        ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(sx + (sx - px) * 0.001, sy + (sy - py) * 0.001); ctx.stroke();
       }
-      this.starRaf = requestAnimationFrame(draw);
+      this.hyStarRaf = requestAnimationFrame(draw);
     };
-    if (this.starRaf) cancelAnimationFrame(this.starRaf);
-    draw();
+    if (this.hyStarRaf) cancelAnimationFrame(this.hyStarRaf);
+    this.hyStarRaf = requestAnimationFrame(draw);
   }
+
+  /* Interstitial shown on the first home → case-study navigation only. */
+  runLoader() { this.runLoaderHyper(); }
 
   /* Soft 14s ambient pad. Browsers need a gesture, so it arms on first input. */
   /* Ambient space pad.
@@ -2489,7 +2526,12 @@ class Component extends DCLogic {
       navRef: this.navRef, progressRef: this.progressRef, toastRef: this.toastRef,
       careerRef: this.careerRef, careerLineRef: this.careerLineRef,
       isHome: v === "home", isIms: v === "ims", isDl: v === "dl", isOps: v === "ops",
-      isLoading: this.state.loading, loadStarRef: this.loadStarRef, loadTitleRef: this.loadTitleRef,
+      isLoadingHyper: this.state.loading,
+      proStageRef: this.proStageRef, proSunRef: this.proSunRef, proPlanetRef: this.proPlanetRef, proShadeRef: this.proShadeRef,
+      hyWrapRef: this.hyWrapRef, hyStarRef: this.hyStarRef, hyFadeRef: this.hyFadeRef, hyTitleRef: this.hyTitleRef, hyCountRef: this.hyCountRef,
+      hyIdxRef: this.hyIdxRef, hyCatRef: this.hyCatRef, hyLineRef: this.hyLineRef, hyTopRef: this.hyTopRef, hyBotRef: this.hyBotRef,
+      proWrapRef: this.proWrapRef, proStarRef: this.proStarRef, proContentRef: this.proContentRef, proOrbitRef: this.proOrbitRef,
+      proTitleRef: this.proTitleRef, proIdxRef: this.proIdxRef, proPctRef: this.proPctRef, proBarRef: this.proBarRef, loadStarRef: this.loadStarRef, loadTitleRef: this.loadTitleRef,
       loadWrapRef: this.loadWrapRef, loadEarthRef: this.loadEarthRef, loadEarthWrapRef: this.loadEarthWrapRef,
       loadTextRef: this.loadTextRef, loadPctRef: this.loadPctRef, loadBarRef: this.loadBarRef, loadFlashRef: this.loadFlashRef,
       showPlanets: v === "home",
